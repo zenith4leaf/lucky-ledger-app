@@ -167,7 +167,7 @@
           <circle cx="29" cy="32.2" r="2.3"/><circle cx="25.8" cy="29" r="2.3"/>
         </g>
       </svg>
-      <div><b>Lucky Ledger</b><span>User guide · v0.0.30</span></div>
+      <div><b>Lucky Ledger</b><span>User guide · v0.0.31</span></div>
     </div>
     <ol>
       <li><a href="#start">Getting started</a></li>
@@ -197,8 +197,8 @@
       <h1>Lucky Ledger User Guide</h1>
       <p>Lucky Ledger is a budget app that tracks where your money goes, organized around your cards and bank accounts. In one app you can log spending fast, use an <b>offset</b> to tidy up money friends pay you back, handle credit card <b>bills, carry-over and prepayments</b>, and keep an eye on your card <b>perks</b>.</p>
       <div class="meta">
-        <span class="pill">App version 0.0.30</span>
-        <span class="pill">As of October 5, 2026 (v0.0.30)</span>
+        <span class="pill">App version 0.0.31</span>
+        <span class="pill">As of October 5, 2026 (v0.0.31)</span>
         <span class="pill">Android first · same design on iOS</span>
       </div>
     </header>
@@ -598,18 +598,19 @@
     </section>
 
     <section id="family">
-      <h2>Family (preview)</h2>
+      <h2>Family</h2>
       <div class="warn"><b>Note</b> Family is in <span class="ui">Settings › Google account &amp; family › Family</span>, and opens with <b>Premium + Google sign-in</b>. To share a ledger with family members on other phones, see <a href="#google">family sharing</a>. <span class="badge-new">NEW</span></div>
       <ul>
         <li><b>Me</b> is registered by default (as the administrator), and you can add up to <b>10</b> family members. You can choose each badge's <b>color</b> and <b>letters (1–2)</b>. To invite someone to family sharing, also enter that person's <b>Google account (email)</b>. <span class="badge-new">NEW</span></li>
         <li><b>When you use the app alone</b> (no family), all the family badges and info below are hidden.</li>
         <li><b>Written by · Edited by</b>: A tiny colored badge for the person who entered it appears above the entry amount, and you can check <b>Written by / Edited by</b> in the entry details. While entering or editing, it's shown on the left of the row above the calculator.</li>
-        <li><b>Asset managers</b>: Choose which family members manage an asset in its edit screen (more than one is fine), and small badges appear after the asset name. If there are many, it shows "+N". If no one is chosen, it's a <b>shared</b> asset.</li>
+        <li><b>Asset managers</b>: Choose which family members manage an asset in its edit screen (more than one is fine), and small badges appear after the asset name. If there are many, it shows "+N". New assets are visible only to <b>you (admin)</b> by default; choose <b>Shared</b> to let the whole family see them. Check it in the asset details under “Assigned family · budgets”.</li>
+        <li><b>Asset favorites</b> are personal (even for shared assets, they apply only on your own phone).</li>
         <li><b>Budget per family member</b>: Split an asset's budget among family members. The family budgets can't add up to more than the asset's budget, and whatever isn't assigned is the <b>shared budget</b>.</li>
       </ul>
       <h3>Administrator and users</h3>
       <ul>
-        <li><b>Only the administrator (you)</b> can manage assets and change settings.</li>
+        <li><b>Only the administrator (you)</b> can make changes — assets, categories, card performance items and settings. Family members only add entries.</li>
         <li>If you switch <b>Who is using the app</b> in Family to a family member, you'll only see the ledger for the assets assigned to that person and the shared assets. The add/edit asset buttons are hidden, and settings are locked except for Help.</li>
         <li>To switch back to the administrator, you'll be asked for the <b>app PIN</b>.</li>
       </ul>
@@ -685,10 +686,32 @@
 
     <section id="changes" class="changelog">
       <h2>15. What's new</h2>
-      <h3>v0.0.30 <span class="badge-new">Latest</span></h3>
+      <h3>v0.0.31 <span class="badge-new">Latest</span></h3>
+      <ul>
+        <li><b>"Sync complete" popup</b>: When you sync manually (Family, Cloud sync, Settings, the Assets tab button, or pull-down), a "Sync complete" window shows what was sent and received and the time.</li>
+        <li><b>Pull down the ledger to sync</b>: Once signed in with Google, pull the ledger list down to sync.</li>
+        <li><b>Sync button on the Assets tab</b>: Once signed in, the top right of the Assets tab shows a sync button and the last sync time. (The app syncs automatically every 3 minutes while it's on screen, on open, on return and 5 seconds after entries, so the time changes often.)</li>
+        <li><b>Only the admin can make changes</b>: Family members (invited members, or when using the app as a family member) can't manage categories, edit assets or edit card performance items. They can still add entries.</li>
+        <li><b>Asset favorites are personal</b>: Starring a shared asset only applies on your own phone.</li>
+        <li><b>New assets default to "Me (admin)"</b>: The default asset manager is now you, not Shared. Choose <b>"Shared"</b> to let the whole family see it.</li>
+        <li>Removed the "preview" notice in Family and shortened the Google account explanation (changes go through Google Drive, so they can take a few seconds to a few minutes to reach other phones).</li>
+        <li>Invited family members no longer see the "assets/7" count on the Assets tab.</li>
+        <li>The start screen now shows the version (by Zenith. v0.0.31).</li>
+      </ul>
+      <h3>v0.0.30</h3>
       <ul>
         <li><b>Fixed a Google Drive permission error</b>: On some phones, Drive backup failed with "Authorization API is not available (SERVICE_INVALID)". In that case, the app now asks for permission again using the older Google permission window.</li>
+        <li><b>Cloud sync moved</b>: It's now inside Settings › Google account &amp; family.</li>
+        <li><b>Several admin phones</b>: After you start family sharing, sign in with the same Google account on another phone and enter the app PIN to continue with the same family list and ledger (both phones stay in sync as admins). Before sharing, signing in offers to bring in this account's Drive backup (including the family list).</li>
+        <li><b>Sync no longer gets stuck</b>: Automatic sync never opens a permission window (you'll see "Drive permission is needed" instead) and gives up if there's no response. While syncing, progress such as "Downloading 12/340" is shown.</li>
+        <li><b>Drive permission on some phones (e.g., China-market models)</b>: If the phone's Google Play services can't be verified (<code>gms=9</code> on the error screen), Google permission is requested in a <b>browser window</b> instead. Tap Allow to return to the app; after that it works without the window. If you see "Google hasn't verified this app", tap Advanced › Go to Lucky Ledger.</li>
+        <li><b>Safer restore, resume and invitations</b>: (1) a "Bringing in data" window stays until everything is downloaded, so you can't switch screens (shows Downloading 12/340) → (2) "Replace the current ledger?" — save a backup first with <b>Export current ledger</b> if needed → (3) replace → (4) tap <b>Close and restart app</b>: the app restarts, goes through lock and Google sign-in and shows the latest ledger (on iPhone, close and reopen the app yourself).</li>
+        <li><b>Auto sync every 3 minutes</b> while the app is on screen (also on open, on return and 5 seconds after entries). It pauses when the app is in the background or closed.</li>
+        <li><b>Changing or adding an admin phone</b>: If this Google account is already sharing from another phone, Family shows <b>Resume admin family ledger</b> instead of Start sharing. Enter the app PIN used when sharing started to receive the family list, assignments, budgets and ledger. (Starting again would split the family ledger, so it's blocked.)</li>
+        <li><b>Google sync right from Settings</b>: Once signed in, tap the cloud icon at the top right of Settings, or pull Settings down — "Starting manual Google sync." appears and it syncs (family ledger while sharing, otherwise a Drive backup).</li>
+        <li><b>Assigned family &amp; budgets in asset details</b>: See who manages the asset and each member's budget and spending this month ("Shared asset" when no one is assigned).</li>
       </ul>
+
       <h3>v0.0.29</h3>
       <ul>
         <li><b>Help when Google Drive can't connect</b>: If backup or sync doesn't work, the app shows the reason (Drive API turned off · permission not allowed · not enough storage · internet), how to fix it, and an error code.</li>
@@ -863,7 +886,7 @@
       <ul><li>Category split view by default, choose a category before entering an amount, and categories that only appear in a comparison month are included.</li></ul>
     </section>
 
-    <footer>Lucky Ledger User Guide · by Zenith. · App version 0.0.30 · This guide is updated whenever the app is updated.</footer>
+    <footer>Lucky Ledger User Guide · by Zenith. · App version 0.0.31 · This guide is updated whenever the app is updated.</footer>
   </main>
 </div>
 <script>
