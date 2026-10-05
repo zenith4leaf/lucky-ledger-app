@@ -167,7 +167,7 @@
           <circle cx="29" cy="32.2" r="2.3"/><circle cx="25.8" cy="29" r="2.3"/>
         </g>
       </svg>
-      <div><b>Lucky Ledger</b><span>User guide · v0.0.32</span></div>
+      <div><b>Lucky Ledger</b><span>User guide · v0.0.33</span></div>
     </div>
     <ol>
       <li><a href="#start">Getting started</a></li>
@@ -197,8 +197,8 @@
       <h1>Lucky Ledger User Guide</h1>
       <p>Lucky Ledger is a budget app that tracks where your money goes, organized around your cards and bank accounts. In one app you can log spending fast, use an <b>offset</b> to tidy up money friends pay you back, handle credit card <b>bills, carry-over and prepayments</b>, and keep an eye on your card <b>perks</b>.</p>
       <div class="meta">
-        <span class="pill">App version 0.0.32</span>
-        <span class="pill">As of October 5, 2026 (v0.0.32)</span>
+        <span class="pill">App version 0.0.33</span>
+        <span class="pill">As of October 5, 2026 (v0.0.33)</span>
         <span class="pill">Android first · same design on iOS</span>
       </div>
     </header>
@@ -282,7 +282,7 @@
       <ul>
         <li>Copy a text message from your card company or bank, then tap <span class="ui">📋</span>; the amount, date, store and asset are filled in.</li>
         <li>You can also <b>share</b> a message from your messaging app to Lucky Ledger without the app opening. You'll just see a notice like "Added to Lucky Ledger · N waiting", and the messages pile up until you open the app, when they all go into the queue at once. If <b>a message with the same content</b> is already recorded or waiting, the app asks "Add it anyway?" when you share it, and asks once more when you record it in the app if it matches a message that's already saved.</li>
-        <li>Messages you <b>share</b> from your messaging app go into a queue, and you can record them one by one by tapping the number badge on <span class="ui">＋</span>. The app lets you know if a message has already been recorded. <small>(Receiving shared messages currently works on Android)</small></li>
+        <li>Messages you <b>share</b> from your messaging app go into a queue, and you can record them one by one with the <b>paste stack button</b> (a stack of papers with a count) that appears next to <span class="ui">＋</span>. <span class="ui">＋</span> always opens a new entry. The app lets you know if a message has already been recorded. <small>(Receiving shared messages currently works on Android)</small></li>
         <li>For entries saved by pasting or sharing, the app keeps the original message and lets you know if you try to add the same message again.        <li>You can view the original message again under <span class="ui">Original message</span> in the entry details.</li>
       </ul>
     </section>
@@ -662,7 +662,8 @@
         <tr><td><code>all clear</code></td><td>Deletes everything and goes back to the default categories</td></tr>
       </table></div>
       <h3>Premium</h3>
-      <p>No ads · unlimited assets · all future feature updates included · cloud sync (coming) · family sharing with Google account (coming).</p>
+      <p>No ads · unlimited assets · cloud sync &amp; Drive backup · family sharing with Google account · all future feature updates included.</p>
+      <p>Enter the <b>15-character key</b> you received (XXXXX-XXXXX-XXXXX) in <span class="ui">Settings › Plan › Enter Premium code</span>. A key must be entered <b>within 5 minutes of being issued</b>; after that, ask for a new one. If your phone's clock is far off, it may fail.</p>
     </section>
 
     <section id="faq">
@@ -687,7 +688,23 @@
 
     <section id="changes" class="changelog">
       <h2>15. What's new</h2>
-      <h3>v0.0.32 <span class="badge-new">Latest</span></h3>
+      <h3>v0.0.33 <span class="badge-new">Latest</span></h3>
+      <ul>
+        <li><b>New Premium keys</b>: Instead of the old fixed code, enter a <b>15-character key</b> (XXXXX-XXXXX-XXXXX). Keys are signed with a secret only the issuer knows and are accepted <b>only within 5 minutes of being issued</b> — a leaked key is useless after 5 minutes. Lowercase, spaces and hyphens don't matter. An old key shows "This key has expired", so ask for a new one (a wrong phone clock can also cause this). The old code no longer works, but phones that already have Premium keep it.</li>
+        <li><b>Correct sign-in status</b>: When the app opens it checks that Google sign-in really still exists on this phone, and if not (signed out, account removed from the phone, etc.) it shows "Not signed in". Fixed the old account email staying on screen as if signed in while backup and sync didn't work. If you never signed in, Google sign-in no longer pops up by itself when the app opens, and a reinstall starts empty (Android's automatic backup no longer brings back the old ledger and account — use the app's backup or Drive backup to move data).</li>
+        <li><b>Restoring a backup keeps this phone's sign-in and Premium</b>: Restoring another phone's or an old backup keeps this phone's Google account, and Premium stays on if either this phone or the backup had it.</li>
+        <li><b>Paste stack button</b>: When messages shared from other apps are waiting, a stacked-papers button with the count appears next to <span class="ui">＋</span> at the bottom of the ledger. Tap it to record them one by one in the order received. <span class="ui">＋</span> now opens a new entry right away without asking.</li>
+        <li><b>Google test ads</b>: The banner above the bottom menu and the full-screen ad show Google test ads (marked "Test Ad"). Without internet, or if no ad loads, only the ad slot is shown.</li>
+        <li><b>Full-screen ad every 6 hours</b>: When you open or return to the app and 6 hours have passed since the last full-screen ad, it appears once (not on the day you install; no ads with Premium).</li>
+        <li><b>Family ledger check</b>: When you open or return to the app, or turn on Premium, the app asks right away if this Google account's Drive has a family ledger to continue. If this phone is already connected to a family ledger (for example after restoring a backup) but Drive permission is missing, a "Get the family ledger" window appears and downloads it once you allow (before, you had to sync manually). Tapping Start sharing with an account that is already sharing is blocked, so nothing is wiped.</li>
+        <li><b>Empty ledgers aren't silently backed up</b>: Backing up a ledger with no assets (for example right after reinstalling) asks first and suggests restoring an earlier backup. Tapping sync on a phone that isn't sharing offers to continue the family ledger instead of backing up, if this account has one. Drive keeps your 10 most recent backups, so you can pick an earlier date to restore. The restore list explains this at the top and marks the largest backup (the one with the most data) as "Largest".</li>
+        <li><b>Sync progress</b>: When you sync manually, a "Syncing the family ledger" window with progress (e.g. Downloading 12/340) stays until it finishes, so you can't move to other menus mid-sync. Automatic background sync shows a thin progress bar above the bottom menu.</li>
+        <li><b>Sign-out needs confirmation + app PIN</b>: Signing out asks once more and needs your app PIN. On the admin's phone family info isn't deleted; the app switches to <b>managing on your own</b> — family, badges, asset managers and family budget settings are hidden and you manage all assets yourself. Signing in again shows everything as before. On an <b>invited family member's phone</b>, signing out deletes the shared family ledger and leaves an empty ledger.</li>
+        <li><b>Starting and stopping sharing</b>: Start sharing first looks for a previous family ledger — if Drive has one, it asks Continue (app PIN) / Start fresh (reset); otherwise, if a Drive backup contains family info, it asks Restore and continue / Start fresh. Stop sharing revokes family access but keeps this phone's ledger, family info and asset list; starting again asks whether to continue.</li>
+        <li><b>Cloud sync and "Continue as family owner" need Premium</b>: If you're signed in with Google but not Premium, both are turned off, and signing in no longer offers to continue or bring in a Drive backup. Invited family members still sync without Premium.</li>
+        <li>Premium benefits wording: removed "(coming)" from cloud sync, Drive backup and family sharing, and moved "All future feature updates included" to the bottom.</li>
+      </ul>
+      <h3>v0.0.32</h3>
       <ul>
         <li><b>Faster sync</b>: Instead of checking each asset folder one by one, the app checks them all at once and downloads new change files six at a time. After the first check it only looks at files created since then, and it no longer rewrites Drive when nothing changed. The Google permission token is reused for 30 minutes.</li>
         <li><b>Invited family can set Security and Display</b>: Settings › Security (PIN, fingerprint, lock time) and Display can be changed on each person's own phone. Other settings stay admin-only.</li>
@@ -896,7 +913,7 @@
       <ul><li>Category split view by default, choose a category before entering an amount, and categories that only appear in a comparison month are included.</li></ul>
     </section>
 
-    <footer>Lucky Ledger User Guide · by Zenith. · App version 0.0.32 · This guide is updated whenever the app is updated.</footer>
+    <footer>Lucky Ledger User Guide · by Zenith. · App version 0.0.33 · This guide is updated whenever the app is updated.</footer>
   </main>
 </div>
 <script>
