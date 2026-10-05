@@ -167,7 +167,7 @@
           <circle cx="29" cy="32.2" r="2.3"/><circle cx="25.8" cy="29" r="2.3"/>
         </g>
       </svg>
-      <div><b>Lucky Ledger</b><span>User guide · v0.0.31</span></div>
+      <div><b>Lucky Ledger</b><span>User guide · v0.0.32</span></div>
     </div>
     <ol>
       <li><a href="#start">Getting started</a></li>
@@ -197,8 +197,8 @@
       <h1>Lucky Ledger User Guide</h1>
       <p>Lucky Ledger is a budget app that tracks where your money goes, organized around your cards and bank accounts. In one app you can log spending fast, use an <b>offset</b> to tidy up money friends pay you back, handle credit card <b>bills, carry-over and prepayments</b>, and keep an eye on your card <b>perks</b>.</p>
       <div class="meta">
-        <span class="pill">App version 0.0.31</span>
-        <span class="pill">As of October 5, 2026 (v0.0.31)</span>
+        <span class="pill">App version 0.0.32</span>
+        <span class="pill">As of October 5, 2026 (v0.0.32)</span>
         <span class="pill">Android first · same design on iOS</span>
       </div>
     </header>
@@ -572,6 +572,7 @@
         <li>If you change an asset's managers, the assets shown on family members' phones change too (assets you take back are removed from their phones).</li>
         <li><span class="ui">Stop sharing</span>: Takes back sharing from your family and stops syncing. Your own ledger stays as it is.</li>
         <li>If your Premium ends, family sharing sync stops.</li>
+        <li>Each month the admin's phone automatically packs last month's change records on Drive into <b>one file</b>. So even after years of use, a new phone or family member doesn't take longer to download the ledger.</li>
       </ul>
       <h3>When the owner gets a new phone <span class="badge-new">NEW</span></h3>
       <ol class="steps">
@@ -610,7 +611,7 @@
       </ul>
       <h3>Administrator and users</h3>
       <ul>
-        <li><b>Only the administrator (you)</b> can make changes — assets, categories, card performance items and settings. Family members only add entries.</li>
+        <li><b>Only the administrator (you)</b> can make changes — assets, categories, card performance items and settings. Family members only add entries — but invited members can still change <b>Security and Display</b> on their own phone.</li>
         <li>If you switch <b>Who is using the app</b> in Family to a family member, you'll only see the ledger for the assets assigned to that person and the shared assets. The add/edit asset buttons are hidden, and settings are locked except for Help.</li>
         <li>To switch back to the administrator, you'll be asked for the <b>app PIN</b>.</li>
       </ul>
@@ -686,7 +687,16 @@
 
     <section id="changes" class="changelog">
       <h2>15. What's new</h2>
-      <h3>v0.0.31 <span class="badge-new">Latest</span></h3>
+      <h3>v0.0.32 <span class="badge-new">Latest</span></h3>
+      <ul>
+        <li><b>Faster sync</b>: Instead of checking each asset folder one by one, the app checks them all at once and downloads new change files six at a time. After the first check it only looks at files created since then, and it no longer rewrites Drive when nothing changed. The Google permission token is reused for 30 minutes.</li>
+        <li><b>Invited family can set Security and Display</b>: Settings › Security (PIN, fingerprint, lock time) and Display can be changed on each person's own phone. Other settings stay admin-only.</li>
+        <li><b>Monthly packing</b>: When the month changes (after one day), the admin's phone packs everything up to last month into one file per folder, and each phone deletes its own old change files that went into the pack. Drive no longer fills up with files, and new phones, new family members and phones that were off for a long time only download the packs, so it's fast. While it runs you'll see "Packing older changes".</li>
+        <li><b>Fast sync even after restarting the app</b>: The phone remembers how far it has read in each folder, so after a restart it only checks files created since then.</li>
+        <li>Fixed family sharing briefly turning off right after the admin continued on a new phone (sharing is now set up after the whole ledger has been downloaded).</li>
+      </ul>
+      <h3>v0.0.31</h3>
+
       <ul>
         <li><b>"Sync complete" popup</b>: When you sync manually (Family, Cloud sync, Settings, the Assets tab button, or pull-down), a "Sync complete" window shows what was sent and received and the time.</li>
         <li><b>Pull down the ledger to sync</b>: Once signed in with Google, pull the ledger list down to sync.</li>
@@ -696,7 +706,7 @@
         <li><b>New assets default to "Me (admin)"</b>: The default asset manager is now you, not Shared. Choose <b>"Shared"</b> to let the whole family see it.</li>
         <li>Removed the "preview" notice in Family and shortened the Google account explanation (changes go through Google Drive, so they can take a few seconds to a few minutes to reach other phones).</li>
         <li>Invited family members no longer see the "assets/7" count on the Assets tab.</li>
-        <li>The start screen now shows the version (by Zenith. v0.0.31).</li>
+        <li>The start screen now shows the version (by Zenith. v0.0.32).</li>
       </ul>
       <h3>v0.0.30</h3>
       <ul>
@@ -886,7 +896,7 @@
       <ul><li>Category split view by default, choose a category before entering an amount, and categories that only appear in a comparison month are included.</li></ul>
     </section>
 
-    <footer>Lucky Ledger User Guide · by Zenith. · App version 0.0.31 · This guide is updated whenever the app is updated.</footer>
+    <footer>Lucky Ledger User Guide · by Zenith. · App version 0.0.32 · This guide is updated whenever the app is updated.</footer>
   </main>
 </div>
 <script>
