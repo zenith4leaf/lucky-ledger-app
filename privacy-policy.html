@@ -112,12 +112,12 @@
 <main>
   <div class="en" lang="en">
     <h1>Lucky Ledger Privacy Policy</h1>
-    <p class="meta">Effective date: 2026.10.05</p>
+    <p class="meta">Effective date: 2026.10.10</p>
     <p class="intro">zenith.4leaf (“we”) respects the privacy of everyone who uses the Lucky Ledger app (the “App”). Your ledger data is stored only on your device by default. We do not collect it on our own servers or view it.</p>
   </div>
   <div class="ko" lang="ko">
     <h1>행운가계부 개인정보처리방침</h1>
-    <p class="meta">시행일: 2026.10.05</p>
+    <p class="meta">시행일: 2026.10.10</p>
     <p class="intro">zenith.4leaf(이하 “운영자”)는 행운가계부 앱(이하 “앱”)을 이용하는 분의 개인정보를 소중히 여기며, 「개인정보 보호법」 등 관련 법령을 지킵니다. 앱의 가계부 기록은 기본적으로 이용자의 기기에만 저장되며, 운영자는 이를 별도 서버로 수집하거나 열람하지 않습니다.</p>
   </div>
 
@@ -146,12 +146,15 @@
         <tr><td>Ledger data</td><td>Account and card names, transactions (date, amount, category, memo), budgets and goals, family member names</td><td>Providing the budgeting features</td><td>Your device</td></tr>
         <tr><td>App lock data</td><td>PIN (hashed), biometric setting</td><td>Locking the App</td><td>Your device (secure storage)</td></tr>
         <tr><td>Google account info (optional)</td><td>Email address, name, profile photo</td><td>Google Drive backup, family sharing</td><td>Your device</td></tr>
-        <tr><td>Backup and shared files (optional)</td><td>All or part of your ledger data</td><td>Backup and restore, sharing with family</td><td>Your own Google Drive</td></tr>
-        <tr><td>Family member emails (optional)</td><td>Google emails entered by the family admin</td><td>Sending invites, sharing folders</td><td>Your device, and the admin’s Google Drive (encrypted)</td></tr>
+        <tr><td>Backup files (optional)</td><td>Your whole ledger data</td><td>Backup and restore</td><td>A hidden app-only folder in your own Google Drive</td></tr>
+        <tr><td>Family sharing data (optional)</td><td>Ledger records of the assets the admin shares (and shared categories and family list), <strong>encrypted on the device</strong></td><td>Sharing the ledger with family</td><td><strong>Google Sheets</strong> that the App creates in the family admin’s own Google Drive (folder “Lucky_Ledger_NoDelete”), stored only as encrypted text</td></tr>
+        <tr><td>Family member emails (optional)</td><td>Google emails entered by the family admin</td><td>Sending invites, sharing the family sheets</td><td>Your device, and the admin’s Google Drive (inside the encrypted sheets)</td></tr>
+        <tr><td>Advertising data (free version only)</td><td>Device advertising ID, IP address, device and app information, ad views and taps</td><td>Showing ads, measuring them and preventing ad fraud</td><td>Collected and processed by Google (AdMob); not stored by us</td></tr>
+        <tr><td>Purchase information (only if you buy Premium)</td><td>Product, purchase time, purchase confirmation (order/receipt token)</td><td>Turning on and restoring Premium</td><td>Your device, and Google Play / App Store</td></tr>
       </table></div>
       <ul>
         <li>Voice input, receipt photos and text shared into the App are used only to fill in entry fields. Photos and recordings are not kept.</li>
-        <li>The App contains no analytics, tracking or location SDKs.</li>
+        <li>Apart from the Google AdMob ad SDK in the free version, the App contains no analytics, tracking or location SDKs. Your ledger data (transactions, amounts, account names, family information) is never sent to the ad provider.</li>
       </ul>
     </div>
     <div class="ko" lang="ko">
@@ -162,12 +165,15 @@
         <tr><td>가계부 기록</td><td>자산·카드 이름, 거래 내역(날짜·금액·카테고리·메모), 예산·목표, 가족 이름</td><td>가계부 기능 제공</td><td>이용자 기기</td></tr>
         <tr><td>앱 잠금 정보</td><td>PIN(암호화된 값), 생체인증 사용 여부</td><td>앱 잠금</td><td>이용자 기기(보안 저장소)</td></tr>
         <tr><td>구글 계정 정보(선택)</td><td>이메일 주소, 이름, 프로필 사진</td><td>드라이브 백업, 가족 공유</td><td>이용자 기기</td></tr>
-        <tr><td>백업·공유 파일(선택)</td><td>가계부 기록 전체 또는 일부</td><td>백업·복원, 가족 간 공유</td><td>이용자 본인의 구글 드라이브</td></tr>
-        <tr><td>가족 구성원 이메일(선택)</td><td>관리자가 입력한 가족의 구글 이메일</td><td>가족 초대·폴더 공유</td><td>기기, 관리자의 구글 드라이브(암호화)</td></tr>
+        <tr><td>백업 파일(선택)</td><td>가계부 기록 전체</td><td>백업·복원</td><td>이용자 본인 구글 드라이브의 앱 전용 숨김 폴더</td></tr>
+        <tr><td>가족 공유 데이터(선택)</td><td>관리자가 공유한 자산의 가계부 기록(공용 카테고리·가족 목록 포함), <strong>기기에서 암호화한 값</strong></td><td>가족 간 장부 공유</td><td>가족 공유를 시작한 관리자 <strong>본인의 구글 드라이브</strong>에 앱이 만든 <strong>구글 시트</strong>(“Lucky_Ledger_NoDelete” 폴더) — 암호화된 글자로만 저장</td></tr>
+        <tr><td>가족 구성원 이메일(선택)</td><td>관리자가 입력한 가족의 구글 이메일</td><td>가족 초대·가족 장부 시트 공유</td><td>기기, 관리자의 구글 드라이브(암호화된 시트 안)</td></tr>
+        <tr><td>광고 정보(무료 버전만)</td><td>기기 광고 ID, IP 주소, 기기·앱 정보, 광고 노출·클릭 기록</td><td>광고 표시·광고 성과 측정·부정 클릭 방지</td><td>Google(AdMob)이 수집·처리 — 운영자는 보관하지 않음</td></tr>
+        <tr><td>구매 정보(프리미엄 구매 시만)</td><td>상품, 구매 시각, 구매 확인 정보(주문·영수증 토큰)</td><td>프리미엄 켜기·구매 복원</td><td>기기, Google Play / App Store</td></tr>
       </table></div>
       <ul>
         <li>음성 입력·영수증 사진·공유받은 문자는 입력 칸을 채우는 데에만 쓰고, 사진이나 녹음을 따로 보관하지 않습니다.</li>
-        <li>앱에는 사용 통계·행동 추적·위치 수집 도구가 없습니다.</li>
+        <li>무료 버전의 광고 도구(Google AdMob) 외에 사용 통계·행동 추적·위치 수집 도구는 없습니다. 가계부 기록(거래·금액·자산 이름·가족 정보)은 광고 회사에 보내지 않습니다.</li>
       </ul>
     </div>
   </section>
@@ -209,14 +215,17 @@
       <p>We do not sell or share your information with third parties. When you turn on the features below, the provider’s service processes the related data.</p>
       <div class="table-wrap"><table>
         <tr><th>Provider</th><th>What it processes</th><th>When</th></tr>
-        <tr><td>Google LLC (Google Sign-In, Google Drive)</td><td>Account authentication, storing backup and shared files</td><td>When you sign in with Google</td></tr>
+        <tr><td>Google LLC (Google Sign-In, Google Drive, Google Sheets)</td><td>Account authentication, storing backup files, storing the encrypted family sharing sheets</td><td>When you sign in with Google</td></tr>
         <tr><td>Google LLC / Apple Inc. (device speech recognition)</td><td>Converting speech to text; depending on device settings, audio may be sent to their servers</td><td>When you use voice input</td></tr>
         <tr><td>Google LLC (ML Kit text recognition)</td><td>Reading text on receipt photos, processed on the device</td><td>When you use receipt input</td></tr>
+        <tr><td>Google LLC (Google AdMob)</td><td>Showing banner and full-screen ads, measuring ads and preventing fraud using the device advertising ID and device information</td><td>While you use the free version</td></tr>
+        <tr><td>Google LLC (Google Play Billing) / Apple Inc. (App Store)</td><td>Processing the Premium payment; payment details such as card numbers are handled by the store and are not given to us</td><td>When you buy or restore Premium</td></tr>
       </table></div>
       <ul>
         <li>Drive backups are saved in a hidden app-only folder in your own Drive. We cannot access them.</li>
-        <li>With family sharing on, only the accounts the admin assigns, plus shared accounts, are shared with invited family members. Shared files are encrypted with a family key (AES-256).</li>
-        <li>If we add ads (such as Google AdMob) or paid features (Google Play or App Store in-app purchases), we will update this policy with the data and providers involved before they go live.</li>
+        <li>With family sharing on, the App stores the shared ledger as <strong>encrypted data in Google Sheets in the admin’s own Google Drive</strong>. Only the records of the assets the admin assigns, plus shared assets, are written there, and each sheet is shared only with the invited family members’ Google accounts. The data is encrypted on the device with a family key (AES-256-GCM) before it is written, so Google and we see only encrypted text.</li>
+        <li>The free version shows Google AdMob ads (a banner above the bottom menu and occasional full-screen ads). Depending on your Google ad settings, ads may be personalized. Premium removes all ads. How Google uses this data: <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use its services</a>.</li>
+        <li>For Premium purchases, we receive only the purchase confirmation from Google Play or the App Store in order to turn on Premium.</li>
       </ul>
     </div>
     <div class="ko" lang="ko">
@@ -224,14 +233,17 @@
       <p>운영자는 이용자의 정보를 판매하거나 제3자에게 제공하지 않습니다. 다만 이용자가 다음 기능을 직접 켜면 해당 회사의 서비스를 통해 정보가 처리됩니다.</p>
       <div class="table-wrap"><table>
         <tr><th>서비스 제공자</th><th>처리 내용</th><th>언제</th></tr>
-        <tr><td>Google LLC (구글 로그인·구글 드라이브)</td><td>계정 인증, 백업·공유 파일 저장</td><td>구글 로그인을 한 경우</td></tr>
+        <tr><td>Google LLC (구글 로그인·구글 드라이브·구글 시트)</td><td>계정 인증, 백업 파일 저장, 암호화된 가족 공유 시트 저장</td><td>구글 로그인을 한 경우</td></tr>
         <tr><td>Google LLC / Apple Inc. (기기 음성 인식)</td><td>말한 내용을 글자로 변환(기기 설정에 따라 해당 회사 서버로 전송될 수 있음)</td><td>음성 입력을 쓸 때</td></tr>
         <tr><td>Google LLC (ML Kit 글자 인식)</td><td>영수증 사진의 글자 읽기 — 기기 안에서 처리</td><td>영수증 입력을 쓸 때</td></tr>
+        <tr><td>Google LLC (Google AdMob)</td><td>배너·전면 광고 표시, 기기 광고 ID·기기 정보를 이용한 광고 성과 측정·부정 클릭 방지</td><td>무료 버전을 쓰는 동안</td></tr>
+        <tr><td>Google LLC (Google Play 결제) / Apple Inc. (App Store)</td><td>프리미엄 결제 처리 — 카드 번호 등 결제 정보는 각 스토어가 처리하며 운영자에게 전달되지 않음</td><td>프리미엄을 구매·복원할 때</td></tr>
       </table></div>
       <ul>
         <li>드라이브 백업은 이용자 드라이브의 앱 전용 숨김 폴더에 저장되며, 운영자는 그 내용에 접근할 수 없습니다.</li>
-        <li>가족 공유를 켜면 관리자가 맡긴 자산과 공용 자산 기록이 초대받은 가족 계정에만 공유됩니다. 공유 파일은 가족 키(AES-256)로 암호화됩니다.</li>
-        <li>향후 광고(Google AdMob 등)나 유료 결제(Google Play·App Store 인앱 결제)를 도입하면, 시행 전에 이 방침에 처리 항목과 제공자를 추가하고 알립니다.</li>
+        <li>가족 공유를 켜면 앱은 공유할 장부를 <strong>관리자 본인의 구글 드라이브에 만든 구글 시트에 암호화된 데이터로 저장</strong>합니다. 관리자가 맡긴 자산과 공용 자산 기록만 담기며, 각 시트는 초대받은 가족의 구글 계정에만 공유됩니다. 데이터는 시트에 쓰기 전에 기기에서 가족 키(AES-256-GCM)로 암호화되므로, 구글과 운영자는 암호화된 글자만 볼 수 있습니다.</li>
+        <li>무료 버전에는 Google AdMob 광고(하단 메뉴 위 배너, 가끔 전체 화면 광고)가 나옵니다. 이용자의 구글 광고 설정에 따라 맞춤 광고가 나올 수 있으며, 프리미엄을 쓰면 광고가 모두 사라집니다. 구글의 정보 이용 방식: <a href="https://policies.google.com/technologies/partner-sites">Google 서비스를 사용하는 사이트 또는 앱에서 Google이 정보를 사용하는 방법</a>.</li>
+        <li>프리미엄을 구매하면 운영자는 프리미엄을 켜는 데 필요한 구매 확인 정보만 Google Play 또는 App Store 로부터 받습니다.</li>
       </ul>
     </div>
   </section>
@@ -240,11 +252,11 @@
   <section id="a4">
     <div class="en" lang="en">
       <h2>4. Use of Google user data</h2>
-      <p>The App uses Google Drive access only to back up and restore your ledger and to create and manage family sharing folders. It does not read or change Drive files the App did not create. The App’s use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. This data is not used for advertising or AI training and is not transferred to others.</p>
+      <p>The App requests these Google permissions and uses them only as described: <strong>drive.appdata</strong> — saving and restoring backups in a hidden app-only folder; <strong>drive.file</strong> — creating the family sharing folder and sheets in the admin’s Drive and sharing them with invited family (only files the App created); <strong>spreadsheets</strong> — reading and writing the encrypted family sharing sheets (the App opens only the Lucky Ledger sheets it created or that were shared with you for Lucky Ledger, and never reads your other spreadsheets). It does not read or change Drive files the App did not create. The App’s use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. This data is not used for advertising or AI training and is not transferred to others.</p>
     </div>
     <div class="ko" lang="ko">
       <h2>제4조 (구글 사용자 데이터의 사용)</h2>
-      <p>앱은 구글 드라이브 권한을 백업·복원과 가족 공유 폴더 생성·권한 관리에만 사용합니다. 앱이 만들지 않은 다른 드라이브 파일은 읽거나 바꾸지 않습니다. 구글 API로 받은 정보의 사용은 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API 서비스 사용자 데이터 정책</a>의 제한적 사용(Limited Use) 요건을 따르며, 광고나 AI 학습에 쓰지 않고 제3자에게 넘기지 않습니다.</p>
+      <p>앱은 다음 구글 권한을 요청하며 적힌 용도에만 씁니다. <strong>drive.appdata</strong> — 앱 전용 숨김 폴더에 백업 저장·복원, <strong>drive.file</strong> — 관리자 드라이브에 가족 공유 폴더·시트를 만들고 초대받은 가족에게 공유(앱이 만든 파일만), <strong>spreadsheets</strong> — 암호화된 가족 공유 시트 읽기·쓰기(앱이 만들었거나 행운가계부 가족 공유로 공유받은 시트만 열며, 이용자의 다른 스프레드시트는 읽지 않음). 앱이 만들지 않은 다른 드라이브 파일은 읽거나 바꾸지 않습니다. 구글 API로 받은 정보의 사용은 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API 서비스 사용자 데이터 정책</a>의 제한적 사용(Limited Use) 요건을 따르며, 광고나 AI 학습에 쓰지 않고 제3자에게 넘기지 않습니다.</p>
     </div>
   </section>
 
@@ -255,7 +267,7 @@
       <ul>
         <li>Data on your device is deleted immediately when you uninstall the App or use Settings › Reset data.</li>
         <li>Only the 10 most recent Drive backups are kept; older ones are deleted automatically. To remove all of them, open Google Drive › Settings › Manage apps and choose “Delete hidden app data” for Lucky Ledger.</li>
-        <li>Family sharing files stay in the admin’s Drive after sharing stops. The admin can delete them in Drive.</li>
+        <li>Family sharing sheets stay in the admin’s Drive (folder “Lucky_Ledger_NoDelete”) after sharing stops, so sharing can be continued later. The admin can delete the folder in Google Drive at any time.</li>
         <li>To disconnect Google, sign out in the App or remove Lucky Ledger under <a href="https://myaccount.google.com/connections">Google Account › Security › Third-party connections</a>.</li>
       </ul>
     </div>
@@ -264,7 +276,7 @@
       <ul>
         <li>기기에 저장된 정보는 앱 삭제, 또는 설정 › 데이터 초기화 시 즉시 지워집니다.</li>
         <li>드라이브 백업은 최근 10개만 남기고 오래된 것은 자동으로 지웁니다. 전부 지우려면 구글 드라이브 › 설정 › 앱 관리에서 행운가계부의 “숨김 앱 데이터 삭제”를 선택하세요.</li>
-        <li>가족 공유 파일은 공유를 중지해도 관리자의 드라이브에 남으며, 관리자가 드라이브에서 직접 지울 수 있습니다.</li>
+        <li>가족 공유 시트는 공유를 중지해도 나중에 이어서 쓸 수 있도록 관리자의 드라이브(“Lucky_Ledger_NoDelete” 폴더)에 남으며, 관리자가 구글 드라이브에서 언제든 직접 지울 수 있습니다.</li>
         <li>구글 연결을 끊으려면 앱에서 로그아웃하거나 <a href="https://myaccount.google.com/connections">구글 계정 › 보안 › 타사 앱 액세스</a>에서 행운가계부의 접근을 삭제하세요.</li>
       </ul>
     </div>
@@ -274,10 +286,12 @@
   <section id="a6">
     <div class="en" lang="en">
       <h2>6. Your rights</h2>
+      <p>You can turn off personalized ads or reset your advertising ID in your phone settings (Android: Settings › Google › Ads; iPhone: Settings › Privacy & Security › Tracking), or remove ads entirely with Premium.</p>
       <p>You can view, edit, delete and export your records to Excel inside the App at any time. Because we do not hold your data, no separate access or deletion request is needed. You can still contact us with any question.</p>
     </div>
     <div class="ko" lang="ko">
       <h2>제6조 (이용자의 권리)</h2>
+      <p>이용자는 휴대폰 설정에서 맞춤 광고를 끄거나 광고 ID 를 재설정·삭제할 수 있습니다(Android: 설정 › Google › 광고, iPhone: 설정 › 개인정보 보호 및 보안 › 추적). 프리미엄을 쓰면 광고가 모두 사라집니다.</p>
       <p>이용자는 언제든 앱 안에서 자신의 기록을 열람·수정·삭제하고 엑셀 파일로 내보낼 수 있습니다. 운영자는 이용자 정보를 보관하지 않으므로 별도의 열람·삭제 요청 절차가 필요 없으나, 궁금한 점은 아래 연락처로 문의할 수 있습니다.</p>
     </div>
   </section>
@@ -288,7 +302,7 @@
       <h2>7. Security</h2>
       <ul>
         <li>Your App PIN is hashed and kept in the device’s secure storage.</li>
-        <li>Family sharing files are encrypted with AES-256-GCM. The admin’s recovery key is locked again with the App PIN.</li>
+        <li>Family sharing data is encrypted on the device with AES-256-GCM before it is written to Google Sheets; the sheets hold only encrypted text. The admin’s recovery key is locked again with the App PIN.</li>
         <li>All network traffic uses Google’s encrypted connections (HTTPS).</li>
       </ul>
     </div>
@@ -296,7 +310,7 @@
       <h2>제7조 (안전성 확보 조치)</h2>
       <ul>
         <li>앱 PIN은 해시되어 기기 보안 저장소에 보관됩니다.</li>
-        <li>가족 공유 파일은 AES-256-GCM으로 암호화되며, 관리자 복구용 키는 앱 PIN으로 다시 잠깁니다.</li>
+        <li>가족 공유 데이터는 구글 시트에 쓰기 전에 기기에서 AES-256-GCM으로 암호화되어, 시트에는 암호화된 글자만 저장됩니다. 관리자 복구용 키는 앱 PIN으로 다시 잠깁니다.</li>
         <li>통신은 모두 구글의 암호화 연결(HTTPS)을 사용합니다.</li>
       </ul>
     </div>
@@ -338,12 +352,12 @@
     <div class="en" lang="en">
       <h2>10. Changes to this policy</h2>
       <p>We will announce changes on this page and in the App’s update notes at least 7 days before they take effect, or 30 days before for changes that reduce your rights.</p>
-      <p class="meta">Effective date: 2026.10.05</p>
+      <p class="meta">Effective date: 2026.10.10</p>
     </div>
     <div class="ko" lang="ko">
       <h2>제10조 (방침의 변경)</h2>
       <p>이 방침이 바뀌면 이 페이지와 앱 업데이트 안내를 통해 시행 7일 전까지 알리며, 이용자에게 불리한 변경은 30일 전까지 알립니다.</p>
-      <p class="meta">시행일: 2026.10.05</p>
+      <p class="meta">시행일: 2026.10.10</p>
     </div>
   </section>
 
