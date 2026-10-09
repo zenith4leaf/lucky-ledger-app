@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucky Ledger User Guide</title>
+<meta name="google-site-verification" content="3JFEb-NBx3LuFtEpAXP9cQcF6Jn6Rx6enDrNsB_TxAI" />
+<meta name="description" content="Lucky Ledger user guide — entering records, offsets, card bills, carry-over and prepayments, card perks, stats and settings">
+<style>
+  :root {
+    --bg: #f6f8f5;
+    --surface: #ffffff;
+    --surface-2: #eef3ec;
+    --text: #1d2420;
+    --muted: #5b675f;
+    --line: #dde5da;
+    --accent: #2e7d32;
+    --accent-soft: #e3f1e3;
+    --expense: #d32f2f;
+    --expense-soft: #fdecec;
+    --income: #1565c0;
+    --gold: #b7892b;
+    --new: #7b3fe4;
+    --new-soft: #f0e9fd;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111512;
+      --surface: #1a201c;
+      --surface-2: #222a24;
+      --text: #e6ece7;
+      --muted: #a2b0a6;
+      --line: #2f3a32;
+      --accent: #7cc47f;
+      --accent-soft: #1f3321;
+      --expense: #ff8a80;
+      --expense-soft: #3a2020;
+      --income: #82b1ff;
+      --gold: #e0b659;
+      --new: #b794f6;
+      --new-soft: #2c2340;
+      --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111512; --surface: #1a201c; --surface-2: #222a24; --text: #e6ece7; --muted: #a2b0a6;
+    --line: #2f3a32; --accent: #7cc47f; --accent-soft: #1f3321; --expense: #ff8a80; --expense-soft: #3a2020;
+    --income: #82b1ff; --gold: #e0b659; --new: #b794f6; --new-soft: #2c2340; --shadow: none;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+    font-size: 16px; line-height: 1.7; word-break: keep-all; overflow-wrap: anywhere;
+  }
+  a { color: var(--accent); }
+  .layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); max-width: 1180px; margin: 0 auto; gap: 32px; padding: 24px; }
+  nav.toc { position: sticky; top: 24px; align-self: start; max-height: calc(100vh - 48px); overflow: auto; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .brand svg { flex: none; }
+  .brand b { font-size: 18px; display: block; line-height: 1.2; }
+  .brand span { color: var(--muted); font-size: 13px; }
+  .toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; }
+  .toc li { counter-increment: toc; }
+  .toc a {
+    display: block; padding: 6px 10px; border-radius: 8px; text-decoration: none; color: var(--text); font-size: 14.5px;
+  }
+  .toc a::before { content: counter(toc) ". "; color: var(--muted); }
+  .toc a:hover { background: var(--surface-2); }
+  main { min-width: 0; }
+  header.hero {
+    background: linear-gradient(135deg, var(--accent-soft), var(--surface));
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; margin-bottom: 24px;
+  }
+  header.hero h1 { margin: 0 0 6px; font-size: 28px; line-height: 1.3; }
+  header.hero p { margin: 0; color: var(--muted); }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  section {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 24px 28px; margin-bottom: 20px; box-shadow: var(--shadow);
+  }
+  h2 { margin: 0 0 12px; font-size: 22px; line-height: 1.35; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  h3 { margin: 22px 0 8px; font-size: 17px; }
+  p { margin: 8px 0; }
+  ul, ol { padding-left: 22px; margin: 8px 0; }
+  li { margin: 3px 0; }
+  .ui { display: inline-block; padding: 0 7px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--line); font-size: .92em; white-space: nowrap; }
+  .tip, .warn, .new-box {
+    border-radius: 10px; padding: 12px 16px; margin: 12px 0; font-size: 15px;
+  }
+  .tip { background: var(--accent-soft); }
+  .warn { background: var(--expense-soft); }
+  .new-box { background: var(--new-soft); }
+  .tip b:first-child, .warn b:first-child, .new-box b:first-child { margin-right: 4px; }
+  .badge-new { font-size: 12px; font-weight: 700; color: #fff; background: var(--new); border-radius: 6px; padding: 1px 7px; letter-spacing: .02em; }
+  .table-wrap { overflow-x: auto; margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  th, td { border-bottom: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--surface-2); font-weight: 600; white-space: nowrap; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .exp { color: var(--expense); }
+  .carry { color: var(--expense); opacity: .75; }
+  .steps { counter-reset: st; list-style: none; padding: 0; }
+  .steps > li { counter-increment: st; position: relative; padding-left: 40px; margin: 10px 0; }
+  .steps > li::before {
+    content: counter(st); position: absolute; left: 0; top: 1px; width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent); color: var(--surface); font-weight: 700; font-size: 14px; display: grid; place-items: center;
+  }
+  .keypads { display: flex; flex-wrap: wrap; gap: 20px; margin: 12px 0; }
+  .keypad { background: var(--surface-2); border-radius: 12px; padding: 12px; }
+  .keypad b { display: block; font-size: 14px; margin-bottom: 8px; }
+  .keys { display: grid; grid-template-columns: repeat(4, 46px); gap: 6px; }
+  .keys span {
+    height: 36px; border-radius: 8px; background: var(--surface); border: 1px solid var(--line);
+    display: grid; place-items: center; font-weight: 600; font-size: 15px;
+  }
+  .keys span.op { color: var(--accent); }
+  .mock {
+    background: var(--surface-2); border-radius: 12px; padding: 14px 16px; margin: 12px 0; font-size: 15px;
+  }
+  .mock .row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .mock small { color: var(--muted); }
+  .chips { display: flex; gap: 6px; flex-wrap: nowrap; overflow: hidden; align-items: center; }
+  .chip { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 2px 10px; font-size: 14px; white-space: nowrap; }
+  .faq dt { font-weight: 700; margin-top: 14px; }
+  .faq dd { margin: 4px 0 0; color: var(--text); }
+  .changelog h3 { display: flex; align-items: center; gap: 8px; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; padding: 16px 0 40px; }
+  .theme-btn {
+    margin-top: 16px; font: inherit; font-size: 13px; padding: 4px 12px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--text); cursor: pointer;
+  }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; padding: 16px; gap: 16px; }
+    nav.toc { position: static; max-height: none; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
+    .toc ol { columns: 2; column-gap: 8px; }
+    section { padding: 18px 16px; }
+    header.hero { padding: 20px 16px; }
+    header.hero h1 { font-size: 23px; }
+  }
+  @media (max-width: 480px) {
+    .toc ol { columns: 1; }
+    .keys { grid-template-columns: repeat(4, 40px); }
+  }
+  @media print {
+    nav.toc, .theme-btn { display: none; }
+    .layout { grid-template-columns: 1fr; }
+    section { break-inside: avoid; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <nav class="toc" aria-label="Contents">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="4" y="3" width="26" height="32" rx="4" fill="var(--accent)"/>
+        <rect x="9" y="9" width="16" height="2.4" rx="1.2" fill="var(--surface)"/>
+        <rect x="9" y="14" width="12" height="2.4" rx="1.2" fill="var(--surface)"/>
+        <rect x="9" y="19" width="14" height="2.4" rx="1.2" fill="var(--surface)"/>
+        <circle cx="29" cy="29" r="9" fill="var(--gold)"/>
+        <g fill="var(--accent)">
+          <circle cx="29" cy="25.8" r="2.3"/><circle cx="32.2" cy="29" r="2.3"/>
+          <circle cx="29" cy="32.2" r="2.3"/><circle cx="25.8" cy="29" r="2.3"/>
+        </g>
+      </svg>
+      <div><b>Lucky Ledger</b><span>User guide · v0.0.37</span></div>
+    </div>
+    <ol>
+      <li><a href="#start">Getting started</a></li>
+      <li><a href="#screens">Finding your way around</a></li>
+      <li><a href="#entry">Adding entries</a></li>
+      <li><a href="#keypad">Entering amounts (keypad)</a></li>
+      <li><a href="#edit">Edit · copy · delete</a></li>
+      <li><a href="#offset">Offset (getting paid back)</a></li>
+      <li><a href="#ledger">Ledger tab</a></li>
+      <li><a href="#stats">Stats tab</a></li>
+      <li><a href="#assets">Assets tab</a></li>
+      <li><a href="#card">Credit card bills · carry-over · prepayment</a></li>
+      <li><a href="#perf">Card perks</a></li>
+      <li><a href="#manage">Recurring · favorites · categories</a></li>
+      <li><a href="#widget">Home screen widget</a></li>
+      <li><a href="#google">Google account · Drive backup · family sharing</a></li>
+      <li><a href="#family">Family</a></li>
+      <li><a href="#settings">Settings</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#changes">What's new</a></li>
+    </ol>
+    <button class="theme-btn" type="button" id="themeBtn">Switch to dark mode</button>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <h1>Lucky Ledger User Guide</h1>
+      <p>Lucky Ledger is a budget app that tracks where your money goes, organized around your cards and bank accounts. In one app you can log spending fast, use an <b>offset</b> to tidy up money friends pay you back, handle credit card <b>bills, carry-over and prepayments</b>, and keep an eye on your card <b>perks</b>.</p>
+      <div class="meta">
+        <span class="pill">App version 0.0.37</span>
+        <span class="pill">As of October 5, 2026 (v0.0.37)</span>
+        <span class="pill">Android first · same design on iOS</span>
+      </div>
+    </header>
+
+    <section id="start">
+      <h2>1. Getting started</h2>
+      <ol class="steps">
+        <li>Choose your <b>language, currency and the day your week starts on</b>. Lucky Ledger supports 7 languages (한국어 · English · 日本語 · 简体中文 · Français · Español · Deutsch) and 20 major currencies. You can change the language and currency later in <span class="ui">Settings › General</span>.</li>
+        <li>Create a <b>4-digit PIN</b> (required). Turn on fingerprint or face unlock if you like. The lock screen appears every time you open the app, and when you come back after stepping away for a moment.</li>
+        <li><b>Add your first asset</b>. Choose from cash, bank account, credit card, debit card or loan. You can't record anything until you have at least one asset.</li>
+        <li>After a short tutorial, you're ready to go. The <b>tip cards</b> around the app stay hidden once you close them with ✕, and you can bring them back in <span class="ui">Settings › Help</span>. The first-use tutorial has 11 steps: 6 steps on the main screens, followed by card perks and linked categories, excluding from the card total, due dates (last day of each month vs. end of the same month), prepayment and carry-over, and money in and out of an asset.</li>
+      </ol>
+      <div class="warn"><b>Please remember</b> Your records are stored only on this phone (no sign-in required). If you forget your PIN, you can only reset it with fingerprint or face unlock; if that doesn't work either, you'll have to reset your data. Make a <a href="#settings">backup</a> every now and then.</div>
+    </section>
+
+    <section id="screens">
+      <h2>2. Finding your way around</h2>
+      <p>At the bottom of the screen there are 4 tabs and an add button.</p>
+      <div class="table-wrap"><table>
+        <tr><th>Tab</th><th>What it does</th></tr>
+        <tr><td><b>Ledger</b></td><td>See your entries by date in Daily, Calendar or Monthly view, with filters and search</td></tr>
+        <tr><td><b>Stats</b></td><td>Spending and income share by category (donut/bar), month-to-month comparison</td></tr>
+        <tr><td><b>Assets</b></td><td>Net worth, balance of each asset, upcoming card bills and carry-over, this month's card perks</td></tr>
+        <tr><td><b>Settings</b></td><td>Manage (categories, recurring, favorites and more), General, Security, Display, Help, Plan</td></tr>
+        <tr><td><b>＋ button</b></td><td>Add a new entry from any tab. After saving, you're taken to the Ledger tab</td></tr>
+      </table></div>
+      <p>Notices like "Saved" and "Undo" always appear at the <b>very top of the screen</b> (they close by themselves after 3 seconds).</p>
+    </section>
+
+    <section id="entry">
+      <h2>3. Adding entries</h2>
+      <p>Tap <span class="ui">＋</span> and the entry screen slides up from the bottom. Choose <b>Expense / Income / Transfer</b> at the top, type the amount, and tap <span class="ui">Save</span>. That's it.</p>
+      <h3>What's on the entry screen</h3>
+      <ul>
+        <li><b>Date · time chips</b>: Set to right now by default. Tap to change them.</li>
+        <li><b>Category badge</b>: Sits in the same row as the date and asset badges. It starts as <span class="ui">Choose category</span>; once you pick one, it shows the category name, and you can tap it again to change it (✕ to clear).</li>
+        <li><b>Asset chip</b>: The asset you used last is selected by default. Tap it to see your assets in the same sections and order as the Assets tab (favorites at the top, hidden assets left out). For a transfer, <span class="ui">From → To</span> is shown on one line.</li>
+        <li><b>Description</b> (store name, etc.): As you type, the app looks for similar past entries and shows suggestions below.</li>
+        <li><b>Details</b> checkbox: Opens a memo field.</li>
+        <li><b>Frequent descriptions</b>: Swipe sideways through the descriptions you've used most this year and pick one.</li>
+        <li>Top right: <span class="ui">📋</span> paste a payment text message you copied · <span class="ui">⭐</span> load from favorites · <span class="ui">🎤</span> add by voice · <span class="ui">📷</span> scan a receipt</li>
+        <li><b>Who is entering</b>: Once you add family members, a "By ○○" chip appears on the left of the row above the calculator. Tap it to change which family member is entering. When editing, it shows "Editing as ○○" along with the original author (see <a href="#family">Family</a>).</li>
+        <li>Buttons at the bottom: <span class="ui">Cancel</span> <span class="ui">Save</span></li>
+      </ul>
+      <h3>Suggestion badges</h3>
+      <p>When you type a description, category + asset combinations appear as badges in one row next to <b>"✨ Suggested"</b> (most used first, up to 3). If there are many, swipe sideways. Tap a badge to apply it, or pick things yourself.</p>
+      <p>If there are no similar past entries, the app suggests up to 3 <b>categories that match the description</b>. For example: <span class="ui">tuition</span> → Education, <span class="ui">wedding gift</span> → Gifts &amp; events, <span class="ui">Starbucks</span> → Coffee. Categories you created yourself are suggested too if their names are similar.</p>
+      <div class="mock">
+        <div class="chips"><b style="color:var(--accent)">✨ Suggested</b><span class="chip">Coffee · Debit card</span><span class="chip">Café · Cash</span><span class="chip">Desserts · Shinhan Card</span></div>
+      </div>
+      <h3>Choosing a category</h3>
+      <ul>
+        <li>The default is the <b>split view</b>: main categories on the left, subcategories on the right. A main category with a <b>number ›</b> next to it has subcategories; one without is selected as soon as you tap it. Use the button at the top right to switch to grid view.</li>
+        <li>If the list is long, scroll the whole entry screen up and down to reach the categories at the bottom.</li>
+        <li>Tapping a category <b>only selects it</b>; you save with the <span class="ui">Save</span> button. You can pick the category before entering the amount.</li>
+        <li>If you save without choosing, the entry is saved as <b>Uncategorized</b>.</li>
+        <li>The 📝 button at the top right of the category picker takes you straight to <b>Categories</b> to add or edit them. When you come back, the updated list shows right away (this is also available in the category picker for card perk items).</li>
+      </ul>
+      <h3>Paying by card</h3>
+      <ul>
+        <li><b>Installments</b> (credit cards): Tap the <span class="ui">Pay in full</span> chip to choose 2–60 months. The payments are recorded in advance on the same day each month, starting this month. The list shows <span class="ui">Installment n/N</span>.</li>
+        <li><b>Benefit</b> chip: When you pick a category, the linked card perk is selected automatically. See <a href="#perf">Card perks</a> for details.</li>
+      </ul>
+      <h3>Adding by voice 🎤</h3>
+      <ul>
+        <li>Tap 🎤 at the top right of the entry screen and speak. e.g. <b>"yesterday lunch pizza 9,000 won"</b> → date: yesterday 12:00, amount: 9,000, description: pizza, suggested category: Dining out.</li>
+        <li><b>The order doesn't matter.</b> "9,000 won pizza yesterday lunch" works the same. Say a card name (e.g. Shinhan Card) and the payment method is chosen too; say something like "salary 3 million won" and it switches to Income.</li>
+        <li>It understands words like today, yesterday, the day before yesterday, tomorrow, "the 3rd", "October 3", "2 pm", breakfast/lunch/dinner, and amounts like "9 thousand" or "12 thousand". It listens in the language you've set (any of the 7 languages).</li>
+        <li><b>It doesn't save right away.</b> Once the fields are filled in, check them and tap a category to save.</li>
+        <li>Voice input uses your phone's speech recognition (Google). Please allow microphone access the first time.</li>
+      </ul>
+      <h3>Scanning a receipt 📷</h3>
+      <ul>
+        <li>Tap 📷, then <b>Take a photo</b> or <b>Choose from photos</b>.</li>
+        <li>The app reads the receipt and fills in the <b>total, date and time, store name and card type</b>, and puts the purchased items in <b>Details (memo)</b>. It suggests a category based on the store and items.</li>
+        <li>It finds the total from words like 합계, 결제금액, TOTAL or 合計, and leaves out tax, cash received and change. It finds the card from the card company name, last digits of the card number, or message keywords.</li>
+        <li>For Korean, Japanese and Chinese receipts, the first scan may take a little longer while the text recognition model downloads (internet required).</li>
+        <li>Take the photo in good light with the whole receipt visible. Again, check the fields and tap a category to save.</li>
+      </ul>
+      <h3>Adding from a payment text message</h3>
+      <ul>
+        <li>Copy a text message from your card company or bank, then tap <span class="ui">📋</span>; the amount, date, store and asset are filled in.</li>
+        <li>You can also <b>share</b> a message from your messaging app to Lucky Ledger without the app opening. You'll just see a notice like "Added to Lucky Ledger · N waiting", and the messages pile up until you open the app, when they all go into the queue at once. If <b>a message with the same content</b> is already recorded or waiting, the app asks "Add it anyway?" when you share it, and asks once more when you record it in the app if it matches a message that's already saved.</li>
+        <li>Messages you <b>share</b> from your messaging app go into a queue, and you can record them one by one with the <b>paste stack button</b> (a stack of papers with a count) that appears next to <span class="ui">＋</span>. <span class="ui">＋</span> always opens a new entry. The app lets you know if a message has already been recorded. <small>(Receiving shared messages currently works on Android)</small></li>
+        <li>For entries saved by pasting or sharing, the app keeps the original message and lets you know if you try to add the same message again.        <li>You can view the original message again under <span class="ui">Original message</span> in the entry details.</li>
+      </ul>
+    </section>
+
+    <section id="keypad">
+      <h2>4. Entering amounts (keypad)</h2>
+      <p>Use the <span class="ui">Calculator</span> switch at the top right of the keypad to switch between two modes. The mode you pick is remembered for next time. Every amount field (entries, offsets, card payments, perk limits, asset balances and more) uses the same keypad.</p>
+      <div class="keypads">
+        <div class="keypad"><b>Basic</b>
+          <div class="keys">
+            <span>1</span><span>2</span><span>3</span><span class="op">⌫</span>
+            <span>4</span><span>5</span><span>6</span><span class="op">C</span>
+            <span>7</span><span>8</span><span>9</span><span class="op">−</span>
+            <span>00</span><span>0</span><span>000</span><span class="op">+</span>
+          </div>
+        </div>
+        <div class="keypad"><b>Calculator</b>
+          <div class="keys">
+            <span class="op">C</span><span class="op">(</span><span class="op">)</span><span class="op">⌫</span>
+            <span>1</span><span>2</span><span>3</span><span class="op">×</span>
+            <span>4</span><span>5</span><span>6</span><span class="op">÷</span>
+            <span>7</span><span>8</span><span>9</span><span class="op">−</span>
+            <span>00</span><span>0</span><span>000</span><span class="op">+</span>
+          </div>
+        </div>
+      </div>
+      <ul>
+        <li>When you type a calculation, the expression appears small on top and the <b>total and currency</b> appear large below (e.g. <span class="ui">5,000 × 3</span> → <b>15,000 KRW</b>). There's no need to press <span class="ui">=</span>.</li>
+        <li>If the calculation is incomplete, you'll see "Invalid expression" and it won't be saved.</li>
+        <li>For currencies with decimals, like the US dollar, a <span class="ui">.</span> key appears instead of <span class="ui">000</span>.</li>
+      </ul>
+      <div class="tip"><b>When editing an amount</b> When you open a field that already has an amount, <b>pressing a number first starts over</b>, while <b>pressing an operator like + − × ÷ ( first continues from the existing amount</b>. Example: from 5,000, press <span class="ui">+</span> <span class="ui">1</span><span class="ui">0</span><span class="ui">0</span> → 5,100</div>
+    </section>
+
+    <section id="edit">
+      <h2>5. Edit · copy · delete</h2>
+      <ul>
+        <li>Tap an entry to open its <b>details</b>. From there you can <span class="ui">Edit</span>, <span class="ui">Copy as new entry</span> (with the current time or the original time), <span class="ui">Delete</span>, add it to favorites ☆, or make it recurring 🔁.</li>
+        <li>The app always asks you to confirm before deleting, and you can <b>Undo</b> right after deleting.</li>
+        <li>When deleting an installment, choose <span class="ui">This month only</span> or <span class="ui">Delete all</span>.</li>
+      </ul>
+      <h3>Several entries at once</h3>
+      <p><b>Long-press</b> an entry in the Ledger to enter selection mode. The top shows <span class="ui">N selected</span> and the total of the selected amounts, and you can use <span class="ui">Delete selected</span> or <span class="ui">Edit selected</span> (date, category, asset, description).</p>
+      <p>You can also long-press to select several entries in the recent entries of <b>asset details</b>. Pressing back while selecting just clears the selection. The same goes for the entries that open when you tap a category in <b>Stats</b>.</p>
+    </section>
+
+    <section id="offset">
+      <h2>6. Offset (getting paid back)</h2>
+      <p>Use this when you paid for a friend's meal with your card and they paid you back later. <b>Instead of counting it as income, it's subtracted from the original expense</b>, so your stats only show what you actually spent.</p>
+      <ol class="steps">
+        <li>Open the details of the original expense and tap <span class="ui">Offset</span>.</li>
+        <li>The amount starts as <b>−the remaining amount</b>. If you only got part of it back, just type the number (it automatically becomes a minus amount).</li>
+        <li>Check the asset that received the money (default: the card's payment account), the date and time (default: the original payment time) and the description, then save.</li>
+      </ol>
+      <ul>
+        <li>You can offset in several parts (the total can't exceed the original amount).</li>
+        <li>In the list, an offset appears <b>right above</b> the original expense. In the offset's details, <span class="ui">View original</span> takes you to the original expense.</li>
+        <li>In the offset list in the original expense's details, you can ✏️ edit or 🗑️ delete each one.</li>
+        <li>Your card bill and card perks don't go down (because the card company still bills the full amount).</li>
+      </ul>
+    </section>
+
+    <section id="ledger">
+      <h2>7. Ledger tab</h2>
+      <ul>
+        <li>Date header at the top <span class="ui">‹ Sep 2026 ▾ ›</span>: use the arrows to move, or tap the middle to open a year/month picker (with a <span class="ui">Today</span> button inside).</li>
+        <li>Views: <b>Daily</b> (list by date) · <b>Calendar</b> (income and spending totals in each date cell, card due dates marked, long-press a date to add an entry on that date. Dates from the previous and next months appear in light gray; tap one to jump to that month with the date selected) · <b>Monthly</b> (includes weekly totals).</li>
+        <li><b>Filter</b>: type (expense, income, transfer, offset), asset, category, search words. Active filters show as chips; tap ✕ to clear.</li>
+        <li><b>Search 🔍</b>: Searches all dates by description, memo and category name, and shows the number of results and their total.</li>
+        <li>Automatic card payments are marked <span class="ui">Scheduled</span> before the due date and <span class="ui">Done</span> after it.</li>
+      </ul>
+    </section>
+
+    <section id="stats">
+      <h2>8. Stats tab</h2>
+      <ul>
+        <li>Period: Day · Week · Month · Year · Custom. The date header works the same as in the Ledger.</li>
+        <li>The <span class="ui">Expense</span> / <span class="ui">Income</span> buttons show the total for the period. You can also use <b>filters</b> (asset, category, search words).</li>
+        <li>Spending is calculated <b>after subtracting offsets</b>.</li>
+        <li>Each category has its own color in the charts and lists.</li>
+      </ul>
+      <h3>Donut · bar charts</h3>
+      <ul>
+        <li>Choose <b>Donut</b> (default) or <b>Bar</b> at the top right of the chart.</li>
+        <li>Bar: a vertical bar for each category. Use <span class="ui">+ Compare month</span> to pick up to 2 months and compare them side by side. Categories that only appear in a comparison month are included too.</li>
+        <li>While comparing, each bar shows which month it is (e.g. <span class="ui">Sep</span> <span class="ui">Aug</span>) <b>just below the horizontal axis</b>.</li>
+        <li>In bar mode, <b>bar mode and your comparison months stay as they are</b> even when you change the main month at the top.</li>
+        <li><b>Notice below the chart</b> 🔔: It tells you <b>which category grew the most</b> — compared with the previous period for the donut, or with the comparison month you chose for the bars (e.g. "Dining out spending is up 38% vs Sep").</li>
+      </ul>
+      <h3>Category details</h3>
+      <p>Tap a category in the list below, and the matching entries for that period open at the very bottom. Tap it again or tap ✕ to close.</p>
+      <h3>Spending patterns</h3>
+      <p>In the spending stats, tap <span class="ui">Spending patterns</span> below the category list, or the 📈 icon next to the filter at the top, to see your spending habits over a month. Use the arrows at the top to change the month; any filters you set in Stats still apply.</p>
+      <ul>
+        <li><b>At a glance</b>: Points out what stands out, in plain sentences. e.g. "Dining out spending is up 38% from last month", "Friday evening spending makes up 46% of all your food spending", "You spend 25% more per day on weekends than weekdays", "You've spent 50,000 more than by this day last month".</li>
+        <li><b>Spending pace</b>: Shows your running total from the 1st of the month, with this month (dark line) on top of last month (light line). If the dark line is higher, you're spending faster than last month.</li>
+        <li><b>Merchants you use most</b>: Places you've paid at twice or more, up to 5, by number of visits.</li>
+        <li><b>Weekday vs weekend</b>: Daily average and total. For the current month, the average is based on the days so far.</li>
+        <li><b>Spending by time of day</b>: Dawn (0–6) · Morning · Lunch · Afternoon · Evening · Night. The time with the most spending is highlighted.</li>
+        <li><b>Spending by payment type</b>: Cash/account / Debit card / Credit card.</li>
+        <li>Money you got back (offsets) is subtracted from the original spending.</li>
+      </ul>
+    </section>
+
+    <section id="assets">
+      <h2>9. Assets tab</h2>
+      <ul>
+        <li>Add an asset with <span class="ui">+</span> at the top right. Tap <span class="ui">📊</span> next to it for <b>Asset charts</b>: on top, the year's <b>month-end net worth</b> (switch years), and below, a <b>bar for each asset's balance</b> at the end of the chosen month (◀ ▶ to change the month, or tap a month in the chart above). Debts are shown as red bars.</li>
+        <li>At the top: <b>Net worth</b> on the left, <b>Assets · Debts</b> on the right. This part stays pinned at the top while you scroll the list. Below net worth, the change <b>vs last month</b> is shown in small text (like stock prices: red ▲ for up, blue ▼ for down). The (number) next to the title is how many assets you have.</li>
+        <li><b>Section totals</b>: The total of each section (group) appears on the right of its title as "Total: amount". Assets with "Include in total" turned off are left out, and sections that are all debts, like cards and loans, show the total you owe in the debt color.</li>
+        <li>Assets are listed by section (cash, bank, cards, loans). Use ⇅ next to a section title to reorder, and ⭐ to move an asset to the <b>Favorites</b> section at the top.</li>
+        <li>Bank accounts show the "expected balance after card bills", debit cards show "paid instantly from the <b>linked account</b>", and credit cards show the upcoming bill and carry-over (see <a href="#card">section 10</a>).</li>
+        <li><b>Asset groups</b>: In <span class="ui">Group</span> when adding or editing an asset, pick one of your own groups (e.g. Living expenses, Investments) or create a new one. If you don't pick a group, the asset goes into the default section for its type (Cash &amp; bank / Cards / Loans &amp; other).</li>
+        <li><b>Manage groups</b>: the 📁 button at the top right of the Assets tab. <b>Drag</b> to change the order of Favorites, the default sections and your own groups, and add, rename or delete your groups. Deleting a group doesn't delete its assets; they go back to the default section.</li>
+        <li><b>Hidden assets</b>: Hide an asset in its edit screen to keep it out of the list (it still counts in totals). If you have hidden assets, an eye button appears next to <span class="ui">Add asset</span>; tap it to show the hidden assets again so you can open them.</li>
+        <li><b>Card perks this month</b>: How much of each card's benefit limits you've used. Turn on <span class="ui">Group view</span> at the top right to group perks with the same name (e.g. Coffee) together (see <a href="#perf">section 11</a>).</li>
+      </ul>
+      <h3>Asset details</h3>
+      <ul>
+        <li><b>Changing months</b>: Use ◀ ▶ above the recent entries to change the month (for credit cards, the billing month), and the balance, in, out, card perks and budget at the top all switch to <b>that month</b>. When you look at a past month, the large amount is the balance "as of end of [month]".</li>
+        <li>If you've set budgets per family member, the budget card shows a used/budget gauge for each member along with the <b>shared</b> budget.</li>
+        <li>The <b>recent entries</b> below are <b>grouped by date</b>, just like the Ledger, with each day's income and spending totals next to the date.</li>
+        <li>The large amount on the left is the current balance. The three lines on the right are <b>Prev. balance (+) · In (+) · Out (−)</b> for regular assets, and <b>Prev. used (−) · In (+) · Out (−)</b> for liabilities. For a regular asset, the previous balance plus money in minus money out equals the current balance.</li>
+        <li><b>In · Out</b> means all the money that came into and went out of that asset. Unlike income and spending in the Ledger, it also includes <b>transfers, card payments and money you got back with an offset</b>. Note that an offset is a negative expense, so it counts as <b>−Out</b>, not as In (e.g. pay 60,000, then offset 40,000 → Out is 20,000). Example: a 30,000 transfer from your bank account to cash is Out for the bank account and In for cash. For a credit card, money paid off with a card payment is In, and card spending is Out. 📈 Asset charts use the same rules.</li>
+        <li>Memo, goal amount · budget gauges (see below).</li>
+        <li>At the top right: 📈 Asset charts (month-end balance trend, monthly in and out), ⭐ favorite, ✏️ edit.</li>
+      </ul>
+      <h3>Goal amount · budget gauges</h3>
+      <ul>
+        <li><b>Cash · bank · other assets → Goal amount</b>: Enter the amount you want to save in the asset's edit screen, and a gauge fills from <b>0% → 100%</b> to show how close your current balance is to the goal. Once you pass the goal, you'll see a <b>green bar</b> and 🏆 "Goal reached n%".</li>
+        <li><b>Cards → Budget (spending limit)</b>: Enter a monthly spending limit, and a gauge shows your <b>remaining budget</b> going down from <b>100% → 0%</b>. It's green while you have plenty left, then turns yellow → orange → red as it shrinks. If you go over, you'll see ⚠️ "Over budget by n%".</li>
+        <li>The gauge appears under the asset in the Assets tab list and in asset details. In the list it's shortened to one line, like "Reached 140% ━━ 7M / 5M". If you don't need gauges, turn off <span class="ui">Settings › Display › Show progress gauges</span> to hide them from the list (they still show in asset details).</li>
+        <li>Under the budget in card details, the app tells you <b>how many days are left and how much you can spend per day</b>. e.g. budget 1,500,000, today is the 15th, 1,000,000 left (until the 30th) → "15 days left · spend 66,000 or less a day to stay on budget".</li>
+      </ul>
+      <h3>Add · edit · delete</h3>
+      <ul>
+        <li><b>Liability</b>: When on, the balance is treated as money you owe and added to your debt total (e.g. money you borrowed, an overdraft account). Liability amounts are shown in the debt color. Credit cards, debit cards and loans always have this on, and it can't be changed. Since a debit card is paid from your bank account the moment you use it, its previous used amount is always 0, and its In (automatic payment) and Out (spending) are the same.</li>
+        <li><b>Changing the type</b>: Cash, bank account and other assets can be switched between each other in the edit screen (the balance stays the same). Cards and loans can't change type.</li>
+        <li>Turn off <b>Include in total</b> to leave an asset out of your net worth (e.g. a group fund).</li>
+        <li>Enter the <b>last digits</b> and <b>message keywords</b>, and the app can find the asset automatically from payment text messages.</li>
+        <li>A deleted asset disappears from lists and the entry screen, but its name stays on past entries. <b>It can't be restored</b> (unlike hiding).</li>
+        <li>The free version lets you use up to <b>7 assets</b>. If you're already over that, you can keep using them, but you can't add new ones until you're back under 7.</li>
+      </ul>
+    </section>
+
+    <section id="card">
+      <h2>10. Credit card bills · carry-over · prepayment</h2>
+      <p>The <b>due date, payment account and usage period</b> you set when adding a credit card are a promise: "every month on day N, from this account, I pay for the spending in this period." The app automatically creates your card payments according to that promise.</p>
+      <h3>Choosing a due date: "Last day of each month" and "End of the same month" are different</h3>
+      <div class="table-wrap"><table>
+        <tr><th>Due date option</th><th>What it means</th><th>Example</th></tr>
+        <tr><td><b>Last day of each month</b></td><td>Pays on the last day of every month, for the spending set in the <b>usage period</b> (usually the previous month's spending)</td><td>Spending Aug 1–31 → paid Sep 30</td></tr>
+        <tr><td><b>End of the same month</b></td><td>Pays that month's spending from the 1st to the last day at <b>11:59 PM on the last day of that month</b></td><td>Spending Sep 1–30 → paid Sep 30</td></tr>
+      </table></div>
+      <p>In card details, the payment rule appears next to the <b>Card billing</b> title (e.g. <b>Monthly on the 14th</b>, paid from <b>Chase Checking</b>), with the usage period below it in light text in parentheses (e.g. (Usage: 1st of previous month – end of previous month)). Cards paid at the end of the same month show "End of the same month (that month's usage)".</p>
+      <h3>Moving between billing months · unpaid bills</h3>
+      <ul>
+        <li>The bill box in card details follows <b>the billing month you're viewing</b>: <b>Paid</b> / <b>Scheduled</b> / <b>Unpaid</b> (the due date has passed but it hasn't been paid), prepayments, and <b>carry-over from the previous month</b>.</li>
+        <li>e.g. If it's October and you move to September → you see September's bill amount, and the carry-over is shown as <b>carried over from August</b>.</li>
+        <li>If a bill is unpaid, a <span class="ui">Settle</span> button appears in the box. Tap it to mark that bill as paid now.</li>
+      </ul>
+      <h3>Turning auto-pay on/off</h3>
+      <ul>
+        <li><b>Auto-pay</b> in Edit card › Card billing (on by default).</li>
+        <li><b>When on</b>: Before the due date, the payment shows in the Ledger in advance as "Scheduled", and on the due date it's paid automatically. If there's still money left after the last payment (an unpaid balance from last month), the app asks <b>"Pay it automatically?"</b> when you open it; tap yes and that amount is paid from the payment account. You're only asked once for the same amount.</li>
+        <li><b>When off</b>: Even after the due date, nothing is paid automatically and the bill stays <b>Unpaid</b>. When you've actually paid, tap <span class="ui">Settle</span> in card details.</li>
+      </ul>
+      <h3>From scheduled to paid</h3>
+      <ol class="steps">
+        <li>When you use the card, the spending goes into the <b>bill</b> that matches the usage period (e.g. the October 14 bill), and the <b>scheduled bill</b> amount updates automatically.</li>
+        <li>After the due date, the bill is automatically marked <b>paid</b> when you open the app. The money leaves your bank account and your card balance goes down.</li>
+        <li>Cards paid at the <b>end of the same month</b> (spending from the 1st to the last day, paid at 23:59 that day) are marked paid only after midnight the next day. Spending on the last day is included in the same bill.</li>
+      </ol>
+      <h3>Locked bill amounts and carry-over</h3>
+      <p>The moment a bill is paid, its amount is <b>locked</b>. If you later add or delete spending from last month that you forgot, the amount of the finished bill doesn't change; the difference stays on the card as <b>carry-over</b>.</p>
+      <div class="mock">
+        <div class="row"><span><b>Assets tab · credit card row</b></span></div>
+        <div>Due Oct 14: 10,000 <span class="carry">(carried over: 30,000)</span></div>
+        <div style="margin-top:10px" class="row"><span><b>Card details · top</b></span></div>
+        <div><b class="exp">₩40,000</b><br><small class="carry">(incl. ₩30,000 carried over)</small></div>
+      </div>
+      <p><b>Carry-over</b> = the part of what you owe on the card that isn't in a scheduled bill. It includes spending you entered after the bill was paid, bills you underpaid, and the unpaid balance you entered when you first added the card. There are two ways to clear carry-over.</p>
+      <ul>
+        <li><b>Edit a paid bill</b>: In the details of a paid card payment › <span class="ui">Edit</span>, correct the amount that actually left your account and the memo. Any amount you paid less stays as carry-over.</li>
+        <li><b>Prepayment</b>: Pay it yourself as described below.</li>
+      </ul>
+      <h3>Prepayment (paying yourself)</h3>
+      <ol class="steps">
+        <li>Tap <span class="ui">Pay</span> in card details.</li>
+        <li>Check the amount (default: the next scheduled bill), the account it's paid from, and the date. The <b>description</b> is already filled in with "Prepayment".</li>
+        <li>If there's carry-over, you'll see a <span class="ui">☑ Include carried over (+30,000)</span> checkbox. Tick it and the amount field is filled with <b>scheduled bill + carry-over</b>. The checkbox <b>only fills in the amount for you</b>; if you type the amount yourself without ticking it, the calculation works exactly the same way.</li>
+      </ol>
+      <ul>
+        <li>A prepayment pays off <b>carry-over first</b>, and only the amount beyond the carry-over comes off <b>the nearest scheduled bill</b>. Once the carry-over is cleared, it's no longer shown, and any extra appears as "prepayments total".</li>
+        <li>This calculation is always redone <b>regardless of the order you entered things</b>. Even if you prepay first and add forgotten spending from last month (carry-over) later, the prepayment still clears the carry-over first; if you delete that spending, the amount comes off the scheduled bill again. When needed, one prepayment may be shown as two parts: "carry-over cleared" and "prepayment".</li>
+        <li>If you try to pay <b>more than you owe</b>, an alert pops up and it isn't saved. e.g. If the card balance is 147,000, you can pay up to 147,000.</li>
+        <li>If a prepayment pays off this bill completely, you'll see "This bill is fully settled by ○○ in prepayments".</li>
+        <li>The <b>Card billing</b> area in card details shows something like "Already reduced by ₩4,000 in prepayments", so you know how much will actually be paid on the due date.</li>
+      </ul>
+      <h3>Recent entries in card details</h3>
+      <p>A credit card's recent entries are shown <b>by billing month</b>. By default only <b>spending (card use)</b> is shown; choose <span class="ui">All (incl. payments)</span> above the list to also see card payments and prepayments. The usage period (e.g. Sep 1 – Sep 30) is at the top right, and below it <span class="ui">◀ Oct bill ▶</span> moves between bills. At first, the nearest scheduled bill opens.</p>
+      <div class="table-wrap"><table>
+        <tr><th>Example (due on the 14th, usage 1st–end of previous month)</th><th class="num">Scheduled</th><th class="num">Carry-over</th></tr>
+        <tr><td>Spent 100,000 in September</td><td class="num">100,000</td><td class="num">0</td></tr>
+        <tr><td>10/14 bill paid (amount locked)</td><td class="num">—</td><td class="num">0</td></tr>
+        <tr><td>10/15 entered 20,000 of forgotten September spending</td><td class="num">—</td><td class="num carry">20,000</td></tr>
+        <tr><td>10/16 onward: spent 50,000 in October</td><td class="num">50,000</td><td class="num carry">20,000</td></tr>
+        <tr><td>10/17 prepaid 30,000 → carry-over 20,000 + scheduled 10,000</td><td class="num">40,000</td><td class="num">0</td></tr>
+      </table></div>
+      <div class="mock">
+        <div><b>Example · card paid at the end of the same month</b> — carry-over 200,000 · September spending 167,000 · 220,000 prepaid on Sep 28</div>
+        <div class="row" style="margin-top:6px"><span>Carry-over</span><span>200,000 → <b>0</b> (settled)</span></div>
+        <div class="row"><span>Prepayments total</span><span><b>20,000</b></span></div>
+        <div class="row"><span>Due Sep 30</span><span>167,000 → <b>147,000</b></span></div>
+        <div class="row"><span>Credit card balance</span><span>367,000 → <b>147,000</b></span></div>
+      </div>
+      <div class="tip"><b>What about debit cards?</b> They have no bills; spending is treated as paid from the linked bank account the moment you use the card.</div>
+    </section>
+
+    <section id="perf">
+      <h2>11. Card perks</h2>
+      <p>Manage card perks like "up to 100,000 a month off coffee" in 7 steps.</p>
+      <ol class="steps">
+        <li><b>Prepare categories</b>: In <span class="ui">Settings › Categories</span>, first create the categories that match the perk (e.g. Café › Coffee).</li>
+        <li><b>Add the card</b>: Add the credit card in the Assets tab and set its due date and usage period.</li>
+        <li><b>Perk period</b>: On the card's edit screen, choose "Calendar month" or "Billing period".</li>
+        <li><b>Add a benefit limit</b>: Edit card › Benefit limits by category › Add. Enter a name and monthly limit, then tick the linked categories (choosing a main category includes all its subcategories).</li>
+        <li><b>Counting toward the card total</b>: Some card companies don't count benefited spending toward your total spending. If you turn on <span class="ui">Exclude benefited spending from total</span> on the benefit limit screen, spending up to and including the purchase that reaches the limit is left out of the card total, and spending after that counts again. e.g. limit 600,000, purchases of 500,000 · 200,000 · 100,000 → 500,000 + 200,000 are left out, and 100,000 counts toward the card total. Items with this turned on are marked "Not in total" in card details.</li>
+        <li><b>Enter spending</b>: When you use that card and pick a category, the linked perk is selected automatically.</li>
+        <li><b>Check</b>: See what's left in "Card perks this month" on the Assets tab and in card details. Tap to see the entries that were counted. In card details, tapping a perk item filters the recent entries to just that perk; tap <b>Total spending</b> to see all entries again.</li>
+        <li>Once you pass the limit, the used amount in "used / limit" turns <b>green</b>.</li>
+        <li><b>Reached</b>: When you fill a limit, it changes to ✅ Reached, and another card with room left in the same category is suggested.</li>
+      </ol>
+      <h3>Choosing a perk yourself</h3>
+      <ul>
+        <li>You can pick a perk yourself with the <span class="ui">Benefit</span> chip on the entry screen. Choose "None" to add it only to the card's total spending.</li>
+        <li>If the perk you picked <b>doesn't match the current category, or no category is chosen</b>, the list of categories linked to that perk pops up once more. Pick one and the category changes too, or choose <span class="ui">Keep the current category</span>.</li>
+        <li>If you pick a category again after that, the perk is linked automatically again.</li>
+      </ul>
+      <h3>Group view</h3>
+      <p>Turn on <span class="ui">Group view</span> at the top right of "Card perks this month" in the Assets tab, and perks with the same name (e.g. "Coffee" on several cards) are gathered together. Within each group, <b>cards with the most limit left come first</b>, so you can see right away which card to use next. Your on/off choice is remembered.</p>
+    </section>
+
+    <section id="manage">
+      <h2>12. Recurring · favorites · categories</h2>
+      <h3>Recurring entries</h3>
+      <p><span class="ui">Settings › Recurring</span>, or 🔁 in entry details. Daily (you can choose weekdays), weekly, monthly or quarterly, at a set time. When you open the app, any entries due up to today are recorded automatically. You can also pause them or set an end date. The add/edit screen shows <b>"Next entry: date, weekday, time"</b>, calculated right away, so you know when the next one will be added.</p>
+      <h3>Favorites</h3>
+      <p>Save entries you use often and load them with ⭐ on the entry screen. Tap an item to just fill in the fields, or tap ⚡ to save it right away without typing anything (when it has an amount).</p>
+      <h3>Categories</h3>
+      <p>Add main categories and subcategories, change names, icons and colors, hide them and reorder them. Categories that are already in use are hidden instead of deleted. Turn off "Subcategories" to enter with main categories only.</p>
+    </section>
+
+    <section id="widget">
+      <h2>Home screen widget</h2>
+      <ul>
+        <li>Long-press your phone's home screen and add <span class="ui">Widgets › Lucky Ledger quick add</span> (Android).</li>
+        <li>The widget shows <b>this month's spending</b>, and the buttons on the right let you add entries right away: <span class="ui">Expense</span> · <span class="ui">Income</span> · 🎤 voice · 📷 receipt.</li>
+        <li>Tap a button and the app opens straight to that entry screen (voice and receipt start right away). If the PIN lock is on, it appears after you unlock.</li>
+        <li>The spending amount updates whenever your entries change. <small>(iPhone widget coming later)</small></li>
+      </ul>
+    </section>
+
+    <section id="google">
+      <h2>Google account · Drive backup · family sharing <span class="badge-new">NEW</span></h2>
+      <h3>Google account (top of Settings)</h3>
+      <ul>
+        <li>Tap <b>Google account &amp; family</b> at the top of <span class="ui">Settings</span>. Inside, you'll find your sign-in status, an explanation of family sharing, and the <span class="ui">Sign in with Google</span> button. Once you sign in, <b>Signed in (account)</b> appears under that row on the Settings screen. Your email is shown after you sign in, and you can disconnect with <span class="ui">Sign out</span> on the right.</li>
+        <li>At the top of the account area there's a short explanation of how family sharing works: encrypted in the owner's (Premium) Drive · family members only see the assets assigned to them · on a new phone, continue with the same account + PIN · invited family members only need to sign in, no Premium required.</li>
+        <li>With <b>Premium + sign-in</b>, you can use Drive backup and Family (family sharing). Invited family members only need to sign in, without Premium.</li>
+        <li><small>For now, only accounts registered as <b>test users</b> in Google Cloud can sign in. If you see an "unverified app" warning when signing in, tap <span class="ui">Advanced › Go to Lucky Ledger</span>.</small></li>
+      </ul>
+      <h3>Google Drive backup</h3>
+      <ul>
+        <li><span class="ui">Settings › Cloud sync</span> (just below the Google account row; opens once you're signed in): Drive backup and restore, family sharing sync, and <span class="ui">Open my Google Drive</span> (for an owner who is sharing with family, it opens the family ledger folder directly) are all on one screen. <span class="badge-new">NEW</span></li>
+        <li><span class="ui">Back up to Drive</span> / <span class="ui">Restore from Drive</span> in <span class="ui">Settings › Manage › Excel &amp; backup</span>.</li>
+        <li>Backups are saved in a <b>hidden, app-only folder</b> in your Google Drive, so only you can see them, and the 10 most recent are kept. To restore, pick a date from the list (reopen the app after restoring).</li>
+      </ul>
+      <h3>Family sharing — owner (Premium)</h3>
+      <ol class="steps">
+        <li>Add family members in <span class="ui">Family</span> and enter each person's <b>Google account</b>. Use <b>Asset managers</b> in an asset's edit screen to decide who sees which asset (if no one is chosen, everyone sees it).</li>
+        <li><span class="ui">Family sharing › Start sharing</span>: Your whole ledger is <b>encrypted</b> and uploaded to your Google Drive. Each asset has its own folder, shared only with the family members who can see that asset.</li>
+        <li>Tap <span class="ui">Invite</span> for each family member → a QR code and link appear. Use <span class="ui">Send invite link</span> to send it <b>one-to-one</b> by KakaoTalk or text message. The link works for 7 days.</li>
+        <li>From then on, everything syncs automatically when you open or return to the app, and a few seconds after you enter something. There's also <span class="ui">Sync now</span>.</li>
+      </ol>
+      <ul>
+        <li>If you change an asset's managers, the assets shown on family members' phones change too (assets you take back are removed from their phones).</li>
+        <li><span class="ui">Stop sharing</span>: Takes back sharing from your family and stops syncing. Your own ledger stays as it is.</li>
+        <li>If your Premium ends, family sharing sync stops.</li>
+        <li>Each month the admin's phone automatically packs last month's change records on Drive into <b>one file</b>. So even after years of use, a new phone or family member doesn't take longer to download the ledger.</li>
+      </ul>
+      <h3>When the owner gets a new phone <span class="badge-new">NEW</span></h3>
+      <ol class="steps">
+        <li>Install the app on the new phone and sign in with <b>the same Google account</b> in <span class="ui">Settings › Google account &amp; family</span>. (Please turn Premium back on, too.)</li>
+        <li>After you sign in, the app tells you it found your family ledger in your Drive. (Or use <span class="ui">Continue as family owner</span>.)</li>
+        <li>Enter <b>the app PIN you used when you started sharing</b>, and the whole ledger is downloaded so you can carry on as the owner. You don't need to invite your family again.</li>
+      </ol>
+      <ul>
+        <li>When you start sharing, the app asks for your app PIN once. <b>Recovery info</b> locked with that PIN is saved in the hidden folder in your Drive (without the PIN, no one can open it).</li>
+        <li>If you've changed your app PIN, tap <span class="ui">Re-save recovery PIN</span> in family sharing to save it with the new PIN.</li>
+      </ul>
+      <h3>Family sharing — invited family members</h3>
+      <ol class="steps">
+        <li>Install Lucky Ledger and sign in with <b>the Google account that was invited</b> in <span class="ui">Settings › Google account &amp; family</span>.</li>
+        <li><b>Tap the link you received</b>, and the app opens with "Accept family invite". (Or paste it into <span class="ui">Settings › Google account &amp; family › Accept family invite</span>; for a QR code, use your phone's camera.)</li>
+        <li><span class="ui">Accept invite</span> → this phone's existing ledger is <b>saved as a backup file</b> and then cleared, and you receive only the ledger for the assets assigned to you and the shared assets.</li>
+      </ol>
+      <ul>
+        <li>Family members <b>can't add assets</b>, and editing assets and settings is locked (Account and Help stay open). They can add and edit entries, and those changes reach the owner.</li>
+        <li>If two people edit the same entry, <b>the later edit</b> is kept.</li>
+        <li><span class="ui">Leave sharing</span>: Deletes the shared ledger and goes back to an empty ledger.</li>
+        <li>While family sharing is on, you can't restore a backup or import from another app.</li>
+      </ul>
+    </section>
+
+    <section id="family">
+      <h2>Family</h2>
+      <div class="warn"><b>Note</b> Family is in <span class="ui">Settings › Google account &amp; family › Family</span>, and opens with <b>Premium + Google sign-in</b>. To share a ledger with family members on other phones, see <a href="#google">family sharing</a>. <span class="badge-new">NEW</span></div>
+      <ul>
+        <li><b>Me</b> is registered by default (as the administrator), and you can add up to <b>10</b> family members. You can choose each badge's <b>color</b> and <b>letters (1–2)</b>. To invite someone to family sharing, also enter that person's <b>Google account (email)</b>. <span class="badge-new">NEW</span></li>
+        <li><b>When you use the app alone</b> (no family), all the family badges and info below are hidden.</li>
+        <li><b>Written by · Edited by</b>: A tiny colored badge for the person who entered it appears above the entry amount, and you can check <b>Written by / Edited by</b> in the entry details. While entering or editing, it's shown on the left of the row above the calculator.</li>
+        <li><b>Asset managers</b>: Choose which family members manage an asset in its edit screen (more than one is fine), and small badges appear after the asset name. If there are many, it shows "+N". New assets are visible only to <b>you (admin)</b> by default; choose <b>Shared</b> to let the whole family see them. Check it in the asset details under “Assigned family · budgets”.</li>
+        <li><b>Asset favorites</b> are personal (even for shared assets, they apply only on your own phone).</li>
+        <li><b>Budget per family member</b>: Split an asset's budget among family members. The family budgets can't add up to more than the asset's budget, and whatever isn't assigned is the <b>shared budget</b>.</li>
+      </ul>
+      <h3>Administrator and users</h3>
+      <ul>
+        <li><b>Only the administrator (you)</b> can make changes — assets, categories, card performance items and settings. Family members only add entries — but invited members can still change <b>Security and Display</b> on their own phone.</li>
+        <li>If you switch <b>Who is using the app</b> in Family to a family member, you'll only see the ledger for the assets assigned to that person and the shared assets. The add/edit asset buttons are hidden, and settings are locked except for Help.</li>
+        <li>To switch back to the administrator, you'll be asked for the <b>app PIN</b>.</li>
+      </ul>
+    </section>
+
+    <section id="settings">
+      <h2>13. Settings</h2>
+      <div class="table-wrap"><table>
+        <tr><th>Menu</th><th>What's there</th></tr>
+        <tr><td>Account</td><td>Google account &amp; family (sign-in · Family · continue as owner · accept invite) · Cloud sync</td></tr>
+        <tr><td>Manage</td><td>Categories, assets, recurring entries, favorites, card perks, Excel &amp; backup</td></tr>
+        <tr><td>General</td><td>Language, currency, thousands separator, decimal places, income/expense colors (default: income red · expense blue)</td></tr>
+        <tr><td>Security</td><td>Change PIN, fingerprint/face unlock, auto-lock time (when you visit a file, photo or share screen opened by the app, there's a 5-minute grace period even if it's set to "Immediately")</td></tr>
+        <tr><td>Display</td><td>5 display sizes (default "Small"), theme, info about this device's screen, center on wide screens</td></tr>
+        <tr><td>Help</td><td>Contact us (email), user guide, show tips again</td></tr>
+        <tr><td>Account</td><td>Sign-in and family sharing — coming soon</td></tr>
+        <tr><td>Plan</td><td>About Premium, enter a code</td></tr>
+      </table></div>
+      <h3>Excel export · backup · restore</h3>
+      <ul>
+        <li>Excel: choose a period and create an .xlsx file.</li>
+        <li>Backup: saves your whole ledger as a single file (.db).</li>
+        <li>Both have two buttons. <span class="ui">Save to device</span> opens your phone's "Save as" window so you can pick a folder (e.g. Downloads), and when it's done the app tells you <b>where it was saved</b> (e.g. Download/lucky_ledger_backup_….db). <span class="ui">Share</span> sends it to Google Drive, a messenger chat with yourself, and so on.</li>
+        <li>When you switch phones, move the backup file to the new phone (via Drive, etc.) and restore it. When restoring, you can only choose .db files made by this app. Your PIN is not included in the backup.</li>
+        <li>In the free version, tap <span class="ui">Watch ad to enable</span> once and the export, backup and restore buttons are turned on while you stay on that screen. <small>(For now, only an ad placeholder is shown)</small></li>
+      </ul>
+      <h3>Moving over from another budgeting app</h3>
+      <p>In <span class="ui">Settings › Excel &amp; backup › Restore from another app</span>, you can import another app's backup file. Right now <b>Money Manager (Realbyte) (.mmbak)</b> is supported, and more apps will be added on request.</p>
+      <ol class="steps">
+        <li>Make a backup file (.mmbak) in Money Manager and save it on your phone.</li>
+        <li>In Lucky Ledger, tap <span class="ui">Restore from another app</span> → choose <span class="ui">Money Manager (Realbyte)</span> and select that file.</li>
+        <li>When everything has been moved, a completion window appears; close it to return to the <b>Settings</b> screen.</li>
+        <li>Check the number of assets, categories and entries and the date range, then tap <span class="ui">Restore</span> to bring them over. With many entries, this takes a few dozen seconds.</li>
+      </ol>
+      <ul>
+        <li><b>All the assets, categories and entries currently in Lucky Ledger will be replaced.</b> Back up first if you need to. (Settings such as language and PIN stay the same.)</li>
+        <li>The free version allows up to 7 assets, so if the backup has more, the app will let you know it can't be moved over.</li>
+        <li>Assets are matched to cash, bank, credit card, debit card, loan or other, and each card's payment account, due date and total spending target come over too. The usage period starts as "1st to end of previous month", so please check it once in the card's edit screen.</li>
+        <li>Categories keep Money Manager's list (main categories and subcategories) as is. Expenses recorded as negative amounts (refunds) become an <b>offset</b> attached to the original expense, so they're subtracted in your stats.</li>
+        <li>Budgets, recurring entries, favorites and photos are not moved over.</li>
+      </ul>
+      <h3>Reset data</h3>
+      <p>At the very bottom of Settings. It only runs after you read the explanation and type the phrase yourself. Settings like language, currency and PIN all stay the same.</p>
+      <div class="table-wrap"><table>
+        <tr><th>Phrase to type</th><th>What gets deleted</th></tr>
+        <tr><td><code>data clear</code></td><td>Entries only (assets, categories, recurring rules and favorites are kept)</td></tr>
+        <tr><td><code>default clear</code></td><td>Everything except categories: assets, entries, perks, budgets, recurring entries and favorites</td></tr>
+        <tr><td><code>all clear</code></td><td>Deletes everything and goes back to the default categories</td></tr>
+      </table></div>
+      <h3>Premium</h3>
+      <p>No ads · unlimited assets · cloud sync &amp; Drive backup · family sharing with Google account · all future feature updates included.</p>
+      <p>Enter the <b>15-character key</b> you received (XXXXX-XXXXX-XXXXX) in <span class="ui">Settings › Plan › Enter Premium code</span>. A key must be entered <b>within 5 minutes of being issued</b>; after that, ask for a new one. If your phone's clock is far off, it may fail.</p>
+    </section>
+
+    <section id="faq">
+      <h2>14. FAQ</h2>
+      <dl class="faq">
+        <dt>How do I get in touch?</dt>
+        <dd>Tap <span class="ui">Settings › Help › Contact us</span> and your mail app opens with the recipient (zenith.4leaf@gmail.com) and app version already filled in. If you don't have a mail app, the address is copied instead.</dd>
+        <dt>Should I record money a friend paid me back as income?</dt>
+        <dd>No. Use an <a href="#offset">offset</a> on the original expense. If you record it as income, both your spending and your income look bigger than they really are.</dd>
+        <dt>Last month's card bill was already paid, and then I added spending I'd forgotten.</dt>
+        <dd>The amount of a finished bill doesn't change; the difference stays on the card as <b>carry-over</b>. If you actually paid more, edit the payment entry; if you haven't paid it yet, clear it with a prepayment (tick "Include carried over").</dd>
+        <dt>I made a prepayment, but the scheduled bill didn't change.</dt>
+        <dd>If there's carry-over, a prepayment pays that off first. Check the "Already reduced by … in prepayments" line in card details and the carry-over shown at the top. If the prepayment is smaller than the carry-over, only the carry-over goes down and the scheduled bill stays the same — that's expected. Prepayments that were recorded incorrectly in older versions are fixed automatically when you open the app on v0.0.9 or later.</dd>
+        <dt>Card spending is counted toward the wrong perk.</dt>
+        <dd>Check the linked categories of the perk item. If you pick a perk yourself with the Benefit chip when entering, the app asks you to choose one of that perk's categories when the category doesn't match.</dd>
+        <dt>The text is too small or too large.</dt>
+        <dd>You can choose from 5 sizes in <span class="ui">Settings › Display › Display size</span>. Pop-ups like the payment method and category pickers on the entry screen and the calendar scale up and down the same way.</dd>
+        <dt>What does it look like on an unfolded foldable or a tablet?</dt>
+        <dd>On wide screens, content is shown centered at a comfortable reading width. If you'd rather use the full width of the screen, turn off <span class="ui">Settings › Display › Center on wide screens</span>. In the same place, you can also see the screen size and device type the app detected.</dd>
+      </dl>
+    </section>
+
+    <section id="changes" class="changelog">
+      <h2>15. What's new</h2>
+      <h3>v0.0.37 <span class="badge-new">Latest</span></h3>
+      <ul>
+        <li><b>Reset data asks once more</b>: After typing the phrase and tapping Reset, the app shows what that phrase will erase and asks again. Data is erased only when you tap Erase and reset.</li>
+        <li><b>Full-screen ads once a day, after adding an expense</b>: No full-screen ad when opening the app. Once a day has passed since the last one, it appears once after you add an expense (no ads with Premium).</li>
+      </ul>
+      <h3>v0.0.36</h3>
+      <ul>
+        <li><b>Premium purchase coming soon</b>: The Buy Premium button in Settings › Plan now shows "Coming soon". It will open shortly; meanwhile all basic features are free.</li>
+      </ul>
+      <h3>v0.0.35</h3>
+      <ul>
+        <li><b>Real ads (Android)</b>: The bottom banner and full-screen ads now show real ads instead of Google test ads. Premium has no ads.</li>
+        <li><b>Only the categories scroll when choosing one</b>: On the entry screen, the amount, asset and content at the top stay in place and only the category area scrolls. The Save without category button at the bottom is always visible.</li>
+        <li><b>Progress shown when signing in or out</b>: After Google sign-in, "Checking your Google account" appears while Drive is checked, and "Signing out" appears while signing out — no more silent pauses followed by a sudden question or notice.</li>
+      </ul>
+      <h3>v0.0.34</h3>
+      <ul>
+        <li><b>Fixed buttons hidden behind the navigation bar</b>: On phones with Home · Back · Menu buttons at the bottom of the screen (some Galaxy models, etc.), the Save button on the entry screen and buttons at the very bottom of screens could be hidden behind that bar. Every screen and pop-up sheet now ends above it.</li>
+        <li><b>Buy Premium in the app</b>: In Settings › Plan › Buy Premium, you can buy Premium through Google Play (App Store on iPhone) — a one-time purchase. After reinstalling or changing phones, use Restore purchase; the app also checks automatically when it opens.</li>
+      </ul>
+      <h3>v0.0.33</h3>
+      <ul>
+        <li><b>Family badges in the asset list</b>: Badges are no longer stuck to the name and pushed down; they now sit small above the amount, so the right ends of the badges, amount and goal/budget bar line up.</li>
+        <li><b>Card budget and performance on one line</b>: On card rows in the Assets tab, the budget bar is thinner and a thin overall-performance bar (for cards with a total performance target) sits right below it. "Budget n%" on the left, "Perf n%" on the right — the row height stays the same. Green when the target is met, orange from 80%.</li>
+        <li><b>Last sync time removed</b>: The time shown at the top of the Assets tab and in the sync-complete window is gone (the sync button stays).</li>
+        <li><b>Auto sync every 5 minutes</b>: While the app is on screen, family sharing syncs automatically every 5 minutes (was 3), plus on open, on return and 5 seconds after entries.</li>
+        <li><b>No lock cover when taking screenshots</b>: Taking a screenshot or pulling down the notification shade no longer shows the lock cover while the app is still visible. It only covers when you actually leave (home button or another app).</li>
+        <li><b>Fingerprint button on the lock screen</b>: Fixed the fingerprint window sometimes not opening when you tapped the button. If fingerprint is temporarily locked after too many attempts, the app tells you to use your PIN.</li>
+        <li><b>Correct sign-in status</b>: When the app opens it checks that Google sign-in really still exists on this phone, and if not (signed out, account removed from the phone, etc.) it shows "Not signed in". Fixed the old account email staying on screen as if signed in while backup and sync didn't work. If you never signed in, Google sign-in no longer pops up by itself when the app opens, and a reinstall starts empty (Android's automatic backup no longer brings back the old ledger and account — use the app's backup or Drive backup to move data).</li>
+        <li><b>Restoring a backup keeps this phone's sign-in and Premium</b>: Restoring another phone's or an old backup keeps this phone's Google account, and Premium stays on if either this phone or the backup had it.</li>
+        <li><b>Paste stack button</b>: When messages shared from other apps are waiting, a stacked-papers button with the count appears next to <span class="ui">＋</span> at the bottom of the ledger. Tap it to record them one by one in the order received. <span class="ui">＋</span> now opens a new entry right away without asking.</li>
+        <li><b>Google test ads</b>: The banner above the bottom menu and the full-screen ad show Google test ads (marked "Test Ad"). Without internet, or if no ad loads, only the ad slot is shown.</li>
+        <li><b>Full-screen ad every 6 hours</b>: When you open or return to the app and 6 hours have passed since the last full-screen ad, it appears once (not on the day you install; no ads with Premium).</li>
+        <li><b>Family ledger check</b>: When you open or return to the app, or turn on Premium, the app asks right away if this Google account's Drive has a family ledger to continue. If this phone is already connected to a family ledger (for example after restoring a backup) but Drive permission is missing, a "Get the family ledger" window appears and downloads it once you allow (before, you had to sync manually). Tapping Start sharing with an account that is already sharing is blocked, so nothing is wiped.</li>
+        <li><b>Empty ledgers aren't silently backed up</b>: Backing up a ledger with no assets (for example right after reinstalling) asks first and suggests restoring an earlier backup. Tapping sync on a phone that isn't sharing offers to continue the family ledger instead of backing up, if this account has one. Drive keeps your 10 most recent backups, so you can pick an earlier date to restore. The restore list explains this at the top and marks the largest backup (the one with the most data) as "Largest".</li>
+        <li><b>Sync progress</b>: When you sync manually, a "Syncing the family ledger" window with progress (e.g. Downloading 12/340) stays until it finishes, so you can't move to other menus mid-sync. Automatic background sync shows a thin progress bar above the bottom menu.</li>
+        <li><b>Sign-out needs confirmation + app PIN</b>: Signing out asks once more and needs your app PIN. On the admin's phone family info isn't deleted; the app switches to <b>managing on your own</b> — family, badges, asset managers and family budget settings are hidden and you manage all assets yourself. Signing in again shows everything as before. On an <b>invited family member's phone</b>, signing out deletes the shared family ledger and leaves an empty ledger.</li>
+        <li><b>Starting and stopping sharing</b>: Start sharing first looks for a previous family ledger — if Drive has one, it asks Continue (app PIN) / Start fresh (reset); otherwise, if a Drive backup contains family info, it asks Restore and continue / Start fresh. Stop sharing revokes family access but keeps this phone's ledger, family info and asset list; starting again asks whether to continue.</li>
+        <li><b>Cloud sync and "Continue as family owner" need Premium</b>: If you're signed in with Google but not Premium, both are turned off, and signing in no longer offers to continue or bring in a Drive backup. Invited family members still sync without Premium.</li>
+        <li>Premium benefits wording: removed "(coming)" from cloud sync, Drive backup and family sharing, and moved "All future feature updates included" to the bottom.</li>
+      </ul>
+      <h3>v0.0.32</h3>
+      <ul>
+        <li><b>Faster sync</b>: Instead of checking each asset folder one by one, the app checks them all at once and downloads new change files six at a time. After the first check it only looks at files created since then, and it no longer rewrites Drive when nothing changed. The Google permission token is reused for 30 minutes.</li>
+        <li><b>Invited family can set Security and Display</b>: Settings › Security (PIN, fingerprint, lock time) and Display can be changed on each person's own phone. Other settings stay admin-only.</li>
+        <li><b>Monthly packing</b>: When the month changes (after one day), the admin's phone packs everything up to last month into one file per folder, and each phone deletes its own old change files that went into the pack. Drive no longer fills up with files, and new phones, new family members and phones that were off for a long time only download the packs, so it's fast. While it runs you'll see "Packing older changes".</li>
+        <li><b>Fast sync even after restarting the app</b>: The phone remembers how far it has read in each folder, so after a restart it only checks files created since then.</li>
+        <li>Fixed family sharing briefly turning off right after the admin continued on a new phone (sharing is now set up after the whole ledger has been downloaded).</li>
+      </ul>
+      <h3>v0.0.31</h3>
+
+      <ul>
+        <li><b>"Sync complete" popup</b>: When you sync manually (Family, Cloud sync, Settings, the Assets tab button, or pull-down), a "Sync complete" window shows what was sent and received and the time.</li>
+        <li><b>Pull down the ledger to sync</b>: Once signed in with Google, pull the ledger list down to sync.</li>
+        <li><b>Sync button on the Assets tab</b>: Once signed in, the top right of the Assets tab shows a sync button and the last sync time. (The app syncs automatically every 3 minutes while it's on screen, on open, on return and 5 seconds after entries, so the time changes often.)</li>
+        <li><b>Only the admin can make changes</b>: Family members (invited members, or when using the app as a family member) can't manage categories, edit assets or edit card performance items. They can still add entries.</li>
+        <li><b>Asset favorites are personal</b>: Starring a shared asset only applies on your own phone.</li>
+        <li><b>New assets default to "Me (admin)"</b>: The default asset manager is now you, not Shared. Choose <b>"Shared"</b> to let the whole family see it.</li>
+        <li>Removed the "preview" notice in Family and shortened the Google account explanation (changes go through Google Drive, so they can take a few seconds to a few minutes to reach other phones).</li>
+        <li>Invited family members no longer see the "assets/7" count on the Assets tab.</li>
+        <li>The start screen now shows the version (by Zenith. v0.0.32).</li>
+      </ul>
+      <h3>v0.0.30</h3>
+      <ul>
+        <li><b>Fixed a Google Drive permission error</b>: On some phones, Drive backup failed with "Authorization API is not available (SERVICE_INVALID)". In that case, the app now asks for permission again using the older Google permission window.</li>
+        <li><b>Cloud sync moved</b>: It's now inside Settings › Google account &amp; family.</li>
+        <li><b>Several admin phones</b>: After you start family sharing, sign in with the same Google account on another phone and enter the app PIN to continue with the same family list and ledger (both phones stay in sync as admins). Before sharing, signing in offers to bring in this account's Drive backup (including the family list).</li>
+        <li><b>Sync no longer gets stuck</b>: Automatic sync never opens a permission window (you'll see "Drive permission is needed" instead) and gives up if there's no response. While syncing, progress such as "Downloading 12/340" is shown.</li>
+        <li><b>Drive permission on some phones (e.g., China-market models)</b>: If the phone's Google Play services can't be verified (<code>gms=9</code> on the error screen), Google permission is requested in a <b>browser window</b> instead. Tap Allow to return to the app; after that it works without the window. If you see "Google hasn't verified this app", tap Advanced › Go to Lucky Ledger.</li>
+        <li><b>Safer restore, resume and invitations</b>: (1) a "Bringing in data" window stays until everything is downloaded, so you can't switch screens (shows Downloading 12/340) → (2) "Replace the current ledger?" — save a backup first with <b>Export current ledger</b> if needed → (3) replace → (4) tap <b>Close and restart app</b>: the app restarts, goes through lock and Google sign-in and shows the latest ledger (on iPhone, close and reopen the app yourself).</li>
+        <li><b>Auto sync every 3 minutes</b> while the app is on screen (also on open, on return and 5 seconds after entries). It pauses when the app is in the background or closed.</li>
+        <li><b>Changing or adding an admin phone</b>: If this Google account is already sharing from another phone, Family shows <b>Resume admin family ledger</b> instead of Start sharing. Enter the app PIN used when sharing started to receive the family list, assignments, budgets and ledger. (Starting again would split the family ledger, so it's blocked.)</li>
+        <li><b>Google sync right from Settings</b>: Once signed in, tap the cloud icon at the top right of Settings, or pull Settings down — "Starting manual Google sync." appears and it syncs (family ledger while sharing, otherwise a Drive backup).</li>
+        <li><b>Assigned family &amp; budgets in asset details</b>: See who manages the asset and each member's budget and spending this month ("Shared asset" when no one is assigned).</li>
+      </ul>
+
+      <h3>v0.0.29</h3>
+      <ul>
+        <li><b>Help when Google Drive can't connect</b>: If backup or sync doesn't work, the app shows the reason (Drive API turned off · permission not allowed · not enough storage · internet), how to fix it, and an error code.</li>
+      </ul>
+      <h3>v0.0.28</h3>
+      <ul>
+        <li><b>Google sign-in is on</b>: You can sign in with your Google account in Settings › Google account &amp; family (for now, only accounts registered as test users).</li>
+        <li>The top of Settings is now organized into two rows: <b>Google account &amp; family</b> (with sign-in · sign-out · Family · continue as owner · accept invite inside) and <b>Cloud sync</b>.</li>
+        <li>The app icon background is now dark green.</li>
+      </ul>
+      <h3>v0.0.27</h3>
+      <ul>
+        <li><b>Account</b> at the top of Settings: Google sign-in.</li>
+        <li><b>Google Drive backup &amp; restore</b> with Premium + Google sign-in.</li>
+        <li><b>Family sharing</b> (owner needs Premium): an encrypted family ledger in Google Drive, each family member sees only their assigned assets, invite link · QR code, automatic sync. Invited family members join without Premium, and adding assets is locked for them. If the owner changes phones, they can carry on with the same Google account + app PIN.</li>
+        <li>Family moved to Settings › Google account &amp; family, and opens with Premium + Google sign-in. Added a Google account (email) field for family members.</li>
+      </ul>
+      <h3>v0.0.26</h3>
+      <ul>
+        <li>New app icon.</li>
+        <li>In Stats category details, you can also long-press to select several entries · edit/delete them together.</li>
+        <li>When you visit a screen opened by the app (choosing a restore file, picking a photo, sharing, etc.), the app won't lock for up to 5 minutes even if auto-lock is set to "Immediately" (if you leave for another app yourself, your setting applies).</li>
+        <li>Assets tab: + to add an asset, 📊 Asset charts (month-end net worth trend · balance by asset for each month).</li>
+        <li>Under a card's budget: days left and how much you can spend per day.</li>
+      </ul>
+      <h3>v0.0.25</h3>
+      <ul>
+        <li>When you change the month in asset details (the billing month for cards), the balance, in, out, card perks, budget and bill box at the top all follow that month. Cards show that month's paid/scheduled/unpaid bill and carry-over from the previous month, with [Settle] if it's unpaid.</li>
+        <li><b>Auto-pay</b> on/off in card billing settings. When it's on and there's an unpaid balance from last month, the app asks whether to pay it automatically when you open it.</li>
+        <li>The recurring entry edit screen shows the next entry date and time.</li>
+        <li>🎤 <b>Add by voice</b> (e.g. "yesterday lunch pizza 9,000 won"), 📷 <b>Scan receipt</b> to fill in the total, date, store, card and items automatically — check and then save.</li>
+        <li>Android <b>home screen widget</b>: this month's spending + quick entry for expense, income, voice and receipt.</li>
+        <li><b>Family</b> (preview): register family members, written by/edited by, asset manager badges, budget per family member, switching between administrator and user.</li>
+        <li>Added explanations of the main features to Settings › User guide.</li>
+      </ul>
+      <h3>v0.0.24</h3>
+      <ul>
+        <li>New app icon (a wallet and a four-leaf clover).</li>
+        <li>Cash and bank accounts get a <b>goal amount</b> gauge (0→100%, green when reached), and cards get a <b>budget (spending limit)</b> gauge (remaining budget 100→0%, green→yellow→orange→red, with an over-budget warning).</li>
+        <li>In asset details, you can also long-press recent entries to select several · see the total · edit/delete them together.</li>
+        <li>Stats › <b>Spending patterns</b>: at-a-glance sentences, spending pace chart, merchants you use most, weekday vs weekend, spending by time of day, share by payment type.</li>
+        <li>A notice below the Stats chart for the category that grew the most (donut: vs the previous period, bar: vs the comparison month).</li>
+        <li>Open Spending patterns directly with the 📈 icon next to the filter at the top of Stats; the donut chart is a little smaller (and so is the empty circle in the middle).</li>
+        <li>Goal and budget gauges in the asset list are now a single line. Turn them on and off with Settings › Display › Show progress gauges.</li>
+        <li>After importing from another app, closing the completion window takes you back to the Settings screen.</li>
+        <li>Fixed the "reduced by prepayments" line in card details so it uses the same month as the scheduled bill.</li>
+      </ul>
+      <h3>v0.0.23</h3>
+      <ul>
+        <li>Default icons for each asset type (cash · bank account · credit card · debit card · loan · other), and icon choice for asset groups.</li>
+        <li>Change vs last month under net worth (increase red ▲ · decrease blue ▼), section totals shown as "Total: amount", and (count) next to the asset title.</li>
+        <li>Messages you "Share" are queued without opening the app and recorded all at once when you open it. If the same message already exists, the app asks "Add it anyway?" once when sharing and once when recording.</li>
+        <li>Made the clover on the app icon bigger.</li>
+        <li>Recent entries in asset details are grouped by date with each day's total, and the used amount turns green once you pass a perk limit.</li>
+        <li>"Spending / All (incl. payments)" choice for recent entries in card details.</li>
+        <li>Fixed the lock screen briefly flashing when switching tabs.</li>
+        <li>Category split view: wider main category column with larger text on the left, and subcategories in 2 columns on the right. Main categories with subcategories show a count and › (if there's no mark, tapping selects it right away).</li>
+        <li>The payment method picker is grouped by section like the Assets tab (favorites at the top, hidden assets left out).</li>
+        <li>Larger text in pop-ups like the payment method, category and calendar pickers, which now scale with Settings › Display size.</li>
+      </ul>
+      <h3>v0.0.22</h3>
+      <ul>
+        <li>Totals for each section (group) in the Assets tab (assets not included in totals are left out).</li>
+        <li>The net worth card at the top of the Assets tab stays pinned while scrolling.</li>
+        <li>A different color for each category in Stats.</li>
+      </ul>
+      <h3>v0.0.21</h3>
+      <ul>
+        <li>Asset groups: create your own groups to sort assets into, and set the order of the groups.</li>
+        <li>Hidden assets are kept out of the list, and you can show them again with the eye button.</li>
+        <li>Cash, bank account and other assets can change type in the edit screen.</li>
+        <li>Importing from Money Manager: sections like savings and other are moved into groups with the same name.</li>
+      </ul>
+      <h3>v0.0.20</h3>
+      <ul>
+        <li>"Restore from another app": import a Money Manager (Realbyte) backup file (.mmbak) to bring over your assets, categories and entries.</li>
+      </ul>
+      <h3>v0.0.19</h3>
+      <ul>
+        <li>"Contact us" in Settings › Help: tap it to write an email to us (zenith.4leaf@gmail.com) right in your mail app.</li>
+      </ul>
+      <h3>v0.0.18</h3>
+      <ul>
+        <li>"by Zenith." shown under the logo on the app's start screen.</li>
+        <li>The version at the bottom of Settings now reads "Lucky Ledger. by Zenith. v.version".</li>
+      </ul>
+      <h3>v0.0.17</h3>
+      <ul>
+        <li>Checked and adjusted for major phone screens (small phones · Galaxy S · iPhone · Fold cover/unfolded · tablets).</li>
+        <li>On an unfolded Fold, a tablet or in landscape, content is centered at a comfortable reading width (can be turned off in Settings › Display).</li>
+        <li>Settings › Display shows "This screen" size and type.</li>
+      </ul>
+      <h3>v0.0.16</h3>
+      <ul>
+        <li>The tutorial now has 11 steps: added card perks and linked categories, excluding from the card total, due dates (last day of each month vs end of the same month), prepayment and carry-over, and money in and out of an asset.</li>
+        <li>Added a "Prepayment · carry-over · due date" topic to the in-app user guide.</li>
+      </ul>
+      <h3>v0.0.15</h3>
+      <ul>
+        <li>"Save to device" for backup and Excel export: pick a folder (e.g. Downloads) to save to, and the app tells you where it was saved. "Share" sends it to Drive or a messenger.</li>
+      </ul>
+      <h3>v0.0.14</h3>
+      <ul>
+        <li>Because of the official signing key and new app ID, this version installs on your phone as <b>a separate app from the old one</b> (both are called "Lucky Ledger"). Just this once: ① install the new app → ② in the old app, back up in Settings › Excel &amp; backup › Backup → ③ restore in the new app → ④ delete the old app. After that, you can keep installing updates over it.</li>
+      </ul>
+      <h3>v0.0.13</h3>
+      <ul>
+        <li>"Exclude benefited spending from total" option for card perk items.</li>
+        <li>Combined the Categories shortcuts on the perk item screen into one.</li>
+        <li>Tapping "Total spending" in card details clears the perk filter and shows all entries.</li>
+        <li>Recent entries in card details show only spending (card use). Card payments and prepayments are left out of the list.</li>
+      </ul>
+      <h3>v0.0.12</h3>
+      <ul>
+        <li>Adding entries: pick the category with the badge at the top (removed the "Change category" button at the bottom), and reduced the top and bottom spacing so everything fits on one screen.</li>
+        <li>Asset details: summary labels aligned left and amounts aligned right, and long balances shrink to fit on one line.</li>
+        <li>Debit cards are also treated as liabilities, and their details show Prev. used (−) · In (+) · Out (−).</li>
+        <li>Default category "Housing & telecom" → "Finance &amp; telecom".</li>
+        <li>The default income/expense colors are now "Income red · Expense blue".</li>
+        <li>From the top right of the category picker (when adding entries and for card perks), jump to Categories to add or edit, then come back.</li>
+        <li>"Card billing" in card details: the payment rule next to the title (due date and account in bold), with the usage period in light text in parentheses.</li>
+      </ul>
+      <h3>v0.0.11</h3>
+      <ul>
+        <li>Offsets (money paid back) are counted as −Out, not In, in asset details.</li>
+        <li>"Liability" option when adding or editing an asset (automatic for credit cards and loans, optional for cash, bank accounts and others).</li>
+        <li>Asset details labels: regular assets "Prev. balance (+) · In (+) · Out (−)", liabilities "Prev. used (−) · In (+) · Out (−)".</li>
+      </ul>
+      <h3>v0.0.10</h3>
+      <ul>
+        <li>Calendar: dates from the previous and next months shown in light gray; tap one to move to that month.</li>
+        <li>Suggestions: if there are no similar past entries, up to 3 categories that match the description.</li>
+        <li>Fixed categories at the bottom of the list being cut off so they couldn't be selected.</li>
+        <li>Asset details: previous month's balance · in · out (including transfers and card payments), and asset charts also show in and out.</li>
+      </ul>
+      <h3>v0.0.9</h3>
+      <ul>
+        <li>Due dates "Last day of each month" and "End of the same month" are shown separately (in the due date list and the card billing area).</li>
+        <li>The prepayment rule always applies regardless of entry order: carry-over is cleared first, and only the extra comes off the scheduled bill. Older records are fixed when you open the app.</li>
+        <li>An alert blocks payments larger than what you owe.</li>
+        <li>A note explaining that the "Include carried over" checkbox only fills in the amount, and a label for bills fully settled by prepayments.</li>
+      </ul>
+      <h3>v0.0.8</h3>
+      <ul>
+        <li>A prepayment is linked to the first bill after the date you paid — for cards paid at the end of the same month, a prepayment made before you used the card that month also comes off that month's bill.</li>
+        <li>"Include carried over" checkbox in the card payment window — pay the scheduled bill + carry-over in one go.</li>
+      </ul>
+      <h3>v0.0.7</h3>
+      <ul>
+        <li>"(carried over: amount)" in the card row of the Assets tab, and "(incl. … carried over)" under the balance in card details.</li>
+        <li>Prepayments total shown in the card billing area.</li>
+        <li>Recent entries in card details shown by billing month (with the usage period, and ◀ ▶ to move).</li>
+      </ul>
+      <h3>v0.0.6</h3>
+      <ul>
+        <li>"Group view" for this month's card perks.</li>
+        <li>You can edit the amount and memo of paid card bills too, with bill amounts locked at payment time and carry-over.</li>
+        <li>The description in the pay-it-yourself window is pre-filled with "Prepayment", and prepayments pay off carry-over first.</li>
+      </ul>
+      <h3>v0.0.5</h3>
+      <ul>
+        <li>Suggestions shown as one row of badges next to "Suggested" (swipe sideways).</li>
+        <li>Month names on Stats bars moved below the horizontal axis.</li>
+        <li>When you pick a perk yourself, the app double-checks it against that perk's categories.</li>
+        <li>All calculators: when editing, numbers start over and operators continue.</li>
+      </ul>
+      <h3>v0.0.4</h3>
+      <ul><li>Stats bar mode and comparison months stay when you change the main month, with a month name on each bar.</li></ul>
+      <h3>v0.0.3</h3>
+      <ul><li>The last row of the basic keypad is 00 · 0 · 000 · +; for calculations, the expression is on top and the total below.</li></ul>
+      <h3>v0.0.2</h3>
+      <ul><li>Category split view by default, choose a category before entering an amount, and categories that only appear in a comparison month are included.</li></ul>
+    </section>
+
+    <footer>Lucky Ledger User Guide · by Zenith. · App version 0.0.37 · This guide is updated whenever the app is updated.</footer>
+  </main>
+</div>
+<script>
+  (function () {
+    var btn = document.getElementById('themeBtn');
+    var root = document.documentElement;
+    function isDark() {
+      var t = root.getAttribute('data-theme');
+      if (t) return t === 'dark';
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    function label() { btn.textContent = isDark() ? 'Switch to light mode' : 'Switch to dark mode'; }
+    try { var saved = localStorage.getItem('manual-theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+    label();
+    btn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('manual-theme', next); } catch (e) {}
+      label();
+    });
+  })();
+</script>
+</body>
+</html>

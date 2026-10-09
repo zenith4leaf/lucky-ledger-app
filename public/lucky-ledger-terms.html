@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="3JFEb-NBx3LuFtEpAXP9cQcF6Jn6Rx6enDrNsB_TxAI" />
+<title>Lucky Ledger Terms of Service · 행운가계부 이용약관</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f6f7f9;
+    --text: #1d2129;
+    --muted: #5f6672;
+    --line: #e3e6ea;
+    --accent: #2f6f4f;
+    --accent-soft: #e6f1eb;
+    --ph-bg: #fff4cc;
+    --ph-text: #7a5800;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15171a;
+      --surface: #1d2024;
+      --text: #e7e9ec;
+      --muted: #9aa1ab;
+      --line: #2e3238;
+      --accent: #7cc59d;
+      --accent-soft: #1f3128;
+      --ph-bg: #3a3112;
+      --ph-text: #f3d77a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar {
+    max-width: 1080px; margin: 0 auto; padding: 10px 16px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .brand { font-weight: 700; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; flex-shrink: 0; }
+  .toggle button {
+    border: 0; background: transparent; color: var(--muted);
+    font: inherit; font-size: 13px; padding: 6px 12px; cursor: pointer;
+  }
+  .toggle button + button { border-left: 1px solid var(--line); }
+  .toggle button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  main { max-width: 1080px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 26px; line-height: 1.35; margin: 8px 0 4px; }
+  h2 {
+    font-size: 18px; margin: 40px 0 8px; padding-bottom: 6px;
+    border-bottom: 2px solid var(--accent); color: var(--accent);
+  }
+  h3 { font-size: 15px; margin: 0 0 6px; }
+  p { margin: 0 0 8px; }
+  ol { margin: 0 0 8px; padding-left: 22px; }
+  li { margin: 2px 0; }
+  .meta { color: var(--muted); font-size: 14px; }
+  .ph { background: var(--ph-bg); color: var(--ph-text); border-radius: 4px; padding: 0 4px; }
+
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .pair:last-child { border-bottom: 0; }
+  .pair > div { min-width: 0; }
+  .ko { word-break: keep-all; }
+  .head.pair { padding-top: 0; }
+
+  body[data-lang="en"] .ko, body[data-lang="ko"] .en { display: none; }
+  body[data-lang="en"] .pair, body[data-lang="ko"] .pair { grid-template-columns: 1fr; max-width: 760px; }
+
+  nav.toc { background: var(--surface); border-radius: 10px; padding: 14px 16px; margin: 20px 0 8px; }
+  nav.toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 28px; }
+  nav.toc a { color: var(--text); text-decoration: none; }
+  nav.toc a:hover { color: var(--accent); text-decoration: underline; }
+  body[data-lang="en"] nav.toc .ko, body[data-lang="ko"] nav.toc .en { display: none; }
+  nav.toc .sep { color: var(--muted); }
+  body[data-lang="en"] nav.toc .sep, body[data-lang="ko"] nav.toc .sep { display: none; }
+
+  footer { color: var(--muted); font-size: 13px; margin-top: 32px; }
+
+  @media (max-width: 760px) {
+    .pair { grid-template-columns: 1fr; gap: 10px; }
+    .pair .ko { padding-top: 10px; border-top: 1px dashed var(--line); }
+    body[data-lang="ko"] .pair .ko { padding-top: 0; border-top: 0; }
+    nav.toc ol { columns: 1; }
+    h1 { font-size: 22px; }
+    .toggle button { padding: 6px 9px; }
+  }
+  @media print {
+    header { position: static; }
+    .toggle { display: none; }
+  }
+</style>
+</head>
+<body data-lang="both">
+<header>
+  <div class="bar">
+    <div class="brand">Lucky Ledger · 행운가계부</div>
+    <div class="toggle" role="group" aria-label="Language">
+      <button type="button" data-set="both" aria-pressed="true">EN / 한</button>
+      <button type="button" data-set="en" aria-pressed="false">English</button>
+      <button type="button" data-set="ko" aria-pressed="false">한국어</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="pair head">
+    <div class="en" lang="en">
+      <h1>Lucky Ledger Terms of Service</h1>
+      <p class="meta">Effective date: <span class="ph">2026.10.05</span></p>
+    </div>
+    <div class="ko" lang="ko">
+      <h1>행운가계부 이용약관</h1>
+      <p class="meta">시행일: <span class="ph">2026.10.05</span></p>
+    </div>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#ch1"><span class="en">General Provisions</span><span class="sep"> · </span><span class="ko">총칙</span></a></li>
+      <li><a href="#ch2"><span class="en">Using the Service</span><span class="sep"> · </span><span class="ko">서비스 이용</span></a></li>
+      <li><a href="#ch3"><span class="en">Data and Accounts</span><span class="sep"> · </span><span class="ko">데이터와 계정</span></a></li>
+      <li><a href="#ch4"><span class="en">Paid Services and Ads</span><span class="sep"> · </span><span class="ko">유료 서비스와 광고</span></a></li>
+      <li><a href="#ch5"><span class="en">Obligations and Liability</span><span class="sep"> · </span><span class="ko">의무와 책임</span></a></li>
+      <li><a href="#ch6"><span class="en">Miscellaneous</span><span class="sep"> · </span><span class="ko">기타</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- ================= Chapter 1 ================= -->
+  <section id="ch1">
+    <div class="pair">
+      <div class="en" lang="en"><h2>Chapter 1. General Provisions</h2></div>
+      <div class="ko" lang="ko"><h2>제1장 총칙</h2></div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 1 (Purpose)</h3>
+        <p>These Terms set out the conditions and procedures for using Lucky Ledger (the “Service”), a mobile app provided by <span class="ph">zenith.4leaf</span> (the “Operator”), and the rights, obligations and responsibilities of the Operator and users.</p>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제1조 (목적)</h3>
+        <p>이 약관은 <span class="ph">zenith.4leaf</span>(이하 “운영자”)가 제공하는 모바일 앱 행운가계부(Lucky Ledger, 이하 “서비스”)의 이용 조건과 절차, 운영자와 이용자의 권리·의무 및 책임을 정하는 것을 목적으로 합니다.</p>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 2 (Definitions)</h3>
+        <ol>
+          <li>“Service” means the Lucky Ledger app provided by the Operator on Android and iOS, together with all related features.</li>
+          <li>“User” means any person who uses the Service under these Terms.</li>
+          <li>“Ledger Data” means all records a user enters into or imports into the Service, including assets, transactions, categories, budgets and family information.</li>
+          <li>“Premium” means the bundle of paid features (ad removal, unlimited assets, Drive backup, family sharing, etc.).</li>
+          <li>“Manager” means the user who starts family sharing and manages the ledger and asset assignments; a “Family Member” means a user who joins a shared ledger at the Manager’s invitation.</li>
+          <li>“App Store” means Google Play, the Apple App Store or any other platform that distributes the Service and processes payments.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제2조 (정의)</h3>
+        <ol>
+          <li>“서비스”란 운영자가 Android 및 iOS에서 제공하는 행운가계부 앱과 관련 기능 일체를 말합니다.</li>
+          <li>“이용자”란 이 약관에 따라 서비스를 이용하는 사람을 말합니다.</li>
+          <li>“가계부 데이터”란 이용자가 서비스에 입력하거나 가져온 자산, 내역, 카테고리, 예산, 가족 정보 등 모든 기록을 말합니다.</li>
+          <li>“프리미엄”이란 유료로 제공되는 기능 묶음(광고 제거, 자산 등록 한도 해제, 드라이브 백업, 가족 공유 등)을 말합니다.</li>
+          <li>“관리자”란 가족 공유를 시작하고 가계부와 자산 배정을 관리하는 이용자를, “가족 구성원”이란 관리자의 초대를 받아 공유 가계부에 참여하는 이용자를 말합니다.</li>
+          <li>“앱 마켓”이란 Google Play, Apple App Store 등 서비스를 배포하고 결제를 처리하는 곳을 말합니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 3 (Posting and Amendment of the Terms)</h3>
+        <ol>
+          <li>The Operator posts these Terms in the app (Settings) and on the App Store listing page.</li>
+          <li>The Operator may amend these Terms to the extent permitted by applicable laws, including the Act on the Regulation of Terms and Conditions.</li>
+          <li>Amendments are announced in the app at least 7 days before they take effect, or at least 30 days before for changes unfavorable to users.</li>
+          <li>A user who does not agree to the amended Terms may stop using the Service and delete the app. Continued use after the effective date is deemed acceptance of the amended Terms.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제3조 (약관의 게시와 개정)</h3>
+        <ol>
+          <li>운영자는 이 약관을 앱 안(설정 화면)과 앱 마켓 소개 페이지에서 확인할 수 있도록 게시합니다.</li>
+          <li>운영자는 「약관의 규제에 관한 법률」 등 관련 법령을 어기지 않는 범위에서 약관을 개정할 수 있습니다.</li>
+          <li>약관을 개정하면 적용일 7일 전부터 앱 안에 공지합니다. 이용자에게 불리한 변경은 30일 전부터 공지합니다.</li>
+          <li>이용자가 개정 약관에 동의하지 않으면 서비스 이용을 중단하고 앱을 삭제할 수 있습니다. 적용일 이후 계속 이용하면 개정 약관에 동의한 것으로 봅니다.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Chapter 2 ================= -->
+  <section id="ch2">
+    <div class="pair">
+      <div class="en" lang="en"><h2>Chapter 2. Using the Service</h2></div>
+      <div class="ko" lang="ko"><h2>제2장 서비스 이용</h2></div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 4 (Formation of the Agreement)</h3>
+        <ol>
+          <li>The agreement is formed when a user installs the app and agrees to these Terms on first launch.</li>
+          <li>The basic features of the Service can be used without signing up or logging in.</li>
+          <li>Users under 14 must have the consent of a legal guardian, and paid purchases follow the App Store’s policies for minors.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제4조 (이용 계약의 성립)</h3>
+        <ol>
+          <li>이용 계약은 이용자가 앱을 설치하고 처음 실행할 때 이 약관에 동의하면 성립합니다.</li>
+          <li>서비스의 기본 기능은 회원가입이나 로그인 없이 이용할 수 있습니다.</li>
+          <li>만 14세 미만은 법정대리인의 동의를 받아 이용해야 하며, 유료 결제는 앱 마켓의 미성년자 정책을 따릅니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 5 (Features of the Service)</h3>
+        <p>The Operator provides the following features. Specific features may vary by app version.</p>
+        <ol>
+          <li>Recording assets (cash, bank accounts, cards, etc.) and expense, income and transfer transactions; card payment and spending-tier tracking; budgets and statistics</li>
+          <li>Input assistance such as payment SMS/notification recognition, voice input and receipt photo recognition</li>
+          <li>Importing backup files from other ledger apps, exporting to Excel, and creating and restoring backup files</li>
+          <li>Home screen widgets and app lock (PIN and biometric authentication)</li>
+          <li>Google account login, Google Drive backup and family sharing (Premium)</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제5조 (서비스의 내용)</h3>
+        <p>운영자는 다음 기능을 제공합니다. 구체적인 기능은 앱 버전에 따라 달라질 수 있습니다.</p>
+        <ol>
+          <li>자산(현금·통장·카드 등)과 지출·수입·이체 내역 기록, 카드 결제·실적 관리, 예산·통계</li>
+          <li>결제 문자·알림 인식, 음성 입력, 영수증 사진 인식 등 입력 도움 기능</li>
+          <li>다른 가계부 앱 백업 파일 가져오기, 엑셀 내보내기, 백업 파일 만들기·복원</li>
+          <li>홈 화면 위젯, 앱 잠금(PIN·생체 인증)</li>
+          <li>구글 계정 로그인, 구글 드라이브 백업, 가족 공유(프리미엄)</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 6 (Free Use and Premium)</h3>
+        <ol>
+          <li>Free users may register a limited number of assets. The limit is shown on the in-app “Plan” screen.</li>
+          <li>Ads are shown during free use, and some features such as Excel export, backup and restore are available after watching an ad.</li>
+          <li>Premium users can use the Service without ads or asset limits, and can use Premium-only features.</li>
+          <li>Ledger Data already entered is not deleted when Premium ends. However, assets beyond the free limit cannot be added, and family sharing sync stops.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제6조 (무료 이용과 프리미엄)</h3>
+        <ol>
+          <li>무료 이용자는 자산 등록 개수가 제한되며, 한도는 앱 안 “이용권” 화면에 표시합니다.</li>
+          <li>무료 이용 중에는 광고가 표시되며, 엑셀 내보내기·백업·복원 등 일부 기능은 광고를 본 뒤 사용할 수 있습니다.</li>
+          <li>프리미엄 이용자는 광고 없이, 자산 한도 없이 서비스를 이용하고 프리미엄 전용 기능을 쓸 수 있습니다.</li>
+          <li>프리미엄이 끝난 뒤에도 이미 입력한 가계부 데이터는 지워지지 않습니다. 다만 한도를 넘는 자산은 새로 추가할 수 없고, 가족 공유 동기화는 멈춥니다.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Chapter 3 ================= -->
+  <section id="ch3">
+    <div class="pair">
+      <div class="en" lang="en"><h2>Chapter 3. Data and Accounts</h2></div>
+      <div class="ko" lang="ko"><h2>제3장 데이터와 계정</h2></div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 7 (Storage of Ledger Data)</h3>
+        <ol>
+          <li>Ledger Data is stored only on the user’s device. The Operator does not collect it or keep it on any server.</li>
+          <li>Payment SMS/notifications, voice and receipt photos are processed on the device only to fill in input fields, and are saved only after the user confirms them. Voice and text recognition may use features of the device manufacturer or operating system (OS).</li>
+          <li>Because nothing is kept on a server, data without a backup cannot be recovered if the app is deleted or the device is lost or reset. If a user forgets the app lock PIN and cannot use biometric authentication, the only option is to reset the data.</li>
+          <li>Users are responsible for backing up their own data, for example by creating backup files or using Drive backup. Anyone who receives a backup file can see its contents, so share backup files with care.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제7조 (가계부 데이터의 저장)</h3>
+        <ol>
+          <li>가계부 데이터는 이용자의 기기 안에만 저장되며, 운영자는 이를 수집하거나 별도 서버에 보관하지 않습니다.</li>
+          <li>결제 문자·알림, 음성, 영수증 사진은 기기 안에서 처리되어 입력 칸을 채우는 데만 쓰이며, 저장은 이용자가 확인한 뒤에만 이루어집니다. 음성·문자 인식에는 기기 제조사 또는 운영체제(OS)의 기능이 쓰일 수 있습니다.</li>
+          <li>서버에 보관하지 않으므로, 앱 삭제·기기 분실·초기화 시 백업이 없는 데이터는 복구할 수 없습니다. 앱 잠금 PIN을 잊고 생체 인증도 할 수 없는 경우에도 데이터 초기화만 가능합니다.</li>
+          <li>이용자는 백업 파일 만들기, 드라이브 백업 등으로 스스로 데이터를 백업할 책임이 있습니다. 백업 파일을 다른 사람에게 공유하면 그 내용을 볼 수 있으니 주의해야 합니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 8 (Google Account and Drive Backup)</h3>
+        <ol>
+          <li>Users may optionally log in with a Google account. Login is subject to Google’s Terms of Service and Privacy Policy.</li>
+          <li>Drive backup files are stored in the user’s own Google Drive (in an app-only folder). The Operator does not access those files.</li>
+          <li>The Operator is not responsible if backup or restore fails for reasons on Google’s side, such as a Google Drive outage, insufficient storage or account suspension.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제8조 (구글 계정과 드라이브 백업)</h3>
+        <ol>
+          <li>이용자는 선택에 따라 구글 계정으로 로그인할 수 있으며, 로그인은 구글의 이용약관과 개인정보처리방침을 따릅니다.</li>
+          <li>드라이브 백업 파일은 이용자 본인의 구글 드라이브(앱 전용 폴더)에 저장되며, 운영자는 그 파일에 접근하지 않습니다.</li>
+          <li>구글 드라이브의 장애, 저장 공간 부족, 계정 정지 등 구글의 사정으로 백업·복원이 안 되는 경우 운영자는 책임을 지지 않습니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 9 (Family Sharing)</h3>
+        <ol>
+          <li>The Manager may invite Family Members’ Google accounts to use a ledger together. Shared data is encrypted, stored in the Manager’s Google Drive and shared only with invited accounts.</li>
+          <li>Family Members can see only the assets assigned to them by the Manager and shared assets. Only the Manager can manage assets and settings.</li>
+          <li>Before inviting a Family Member, the Manager must obtain that member’s consent regarding the information that will be shared.</li>
+          <li>When a Family Member accepts an invitation, their existing ledger is saved as a backup file on the device and then cleared. If the Manager withdraws shared assets or the member leaves the share, the related data is deleted from that member’s device.</li>
+          <li>Disputes among family members arising from entering, editing or deleting data are, in principle, to be resolved among those users.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제9조 (가족 공유)</h3>
+        <ol>
+          <li>관리자는 가족 구성원의 구글 계정을 초대하여 가계부를 함께 쓸 수 있습니다. 공유 데이터는 암호화되어 관리자의 구글 드라이브에 저장되고, 초대받은 계정에만 공유됩니다.</li>
+          <li>가족 구성원은 관리자가 맡긴 자산과 공용 자산만 볼 수 있으며, 자산 관리와 설정은 관리자만 할 수 있습니다.</li>
+          <li>관리자는 가족 구성원을 초대하기 전에 공유될 정보에 대해 그 구성원의 동의를 받아야 합니다.</li>
+          <li>가족 구성원이 초대를 받으면 기존 가계부는 기기에 백업 파일로 남긴 뒤 비워집니다. 관리자가 자산 공유를 거두거나 구성원이 공유에서 나가면 해당 데이터는 그 구성원의 기기에서 지워집니다.</li>
+          <li>가족 사이의 데이터 입력·수정·삭제로 생긴 분쟁은 이용자들 사이에서 해결하는 것을 원칙으로 합니다.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Chapter 4 ================= -->
+  <section id="ch4">
+    <div class="pair">
+      <div class="en" lang="en"><h2>Chapter 4. Paid Services and Advertising</h2></div>
+      <div class="ko" lang="ko"><h2>제4장 유료 서비스와 광고</h2></div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 10 (Purchasing Premium)</h3>
+        <ol>
+          <li>Premium is purchased through the App Store’s payment methods. The price and period of use are shown on the purchase screen.</li>
+          <li>If sold as a subscription, it renews automatically under the App Store’s policies unless the user cancels. Cancellation is done in the App Store’s subscription management screen.</li>
+          <li>After changing devices or reinstalling the app, users can regain Premium by using “Restore Purchases” with the same App Store account.</li>
+          <li>Premium codes issued by the Operator may be used only by the recipient and may not be sold or transferred to others.</li>
+          <li>In family sharing, only the Manager needs Premium. Family Members can join without Premium.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제10조 (프리미엄 구매)</h3>
+        <ol>
+          <li>프리미엄은 앱 마켓의 결제 수단으로 구매하며, 가격과 이용 기간은 구매 화면에 표시합니다.</li>
+          <li>정기 구독으로 판매하는 경우, 이용자가 해지하지 않으면 앱 마켓 정책에 따라 자동으로 갱신되며, 해지는 앱 마켓의 구독 관리 화면에서 합니다.</li>
+          <li>기기를 바꾸거나 앱을 다시 설치한 경우, 같은 앱 마켓 계정으로 “구매 복원”을 하면 프리미엄을 다시 사용할 수 있습니다.</li>
+          <li>운영자가 발급한 프리미엄 코드는 받은 본인만 사용할 수 있으며, 판매하거나 다른 사람에게 넘길 수 없습니다.</li>
+          <li>가족 공유에서 프리미엄이 필요한 사람은 관리자이며, 가족 구성원은 프리미엄 없이 참여할 수 있습니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 11 (Withdrawal and Refunds)</h3>
+        <ol>
+          <li>Under the Act on the Consumer Protection in Electronic Commerce, users may withdraw a purchase within 7 days of the purchase date. If Premium features have already been used, withdrawal may be limited to the extent permitted by law, and the Operator will notify users of this before purchase.</li>
+          <li>Payments and refunds are processed by the App Store, so refund requests follow the refund procedures of Google Play or Apple. The Operator will guide users through the refund process where needed.</li>
+          <li>If a defect in the Service prevents Premium features from working properly and the Operator cannot fix it, the user may request a refund.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제11조 (청약철회와 환불)</h3>
+        <ol>
+          <li>이용자는 「전자상거래 등에서의 소비자보호에 관한 법률」에 따라 구매일로부터 7일 이내에 청약을 철회할 수 있습니다. 다만 프리미엄 기능을 이미 사용한 경우에는 법령이 정한 범위에서 철회가 제한될 수 있으며, 운영자는 이를 구매 전에 알립니다.</li>
+          <li>결제와 환불은 앱 마켓이 처리하므로, 환불 요청은 Google Play 또는 Apple의 환불 절차를 따릅니다. 운영자는 필요한 경우 환불 절차를 안내합니다.</li>
+          <li>서비스 결함으로 프리미엄 기능을 정상적으로 쓸 수 없고 운영자가 이를 고치지 못하면, 이용자는 환불을 요청할 수 있습니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 12 (Advertising)</h3>
+        <ol>
+          <li>The Operator may show banner and full-screen (interstitial) ads in the app to free users.</li>
+          <li>Ads may be provided through third-party ad networks (e.g., Google AdMob). Ledger Data is not provided to ad networks. Processing of device information needed to show ads is described in the Privacy Policy.</li>
+          <li>Any transaction on an external site reached by tapping an ad is between the user and the advertiser, and the Operator is not responsible for it.</li>
+          <li>Ads are not shown to Premium users.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제12조 (광고)</h3>
+        <ol>
+          <li>운영자는 무료 이용자에게 앱 화면에 배너 광고와 전면 광고를 표시할 수 있습니다.</li>
+          <li>광고는 외부 광고 사업자(예: Google AdMob)를 통해 제공될 수 있으며, 가계부 데이터는 광고 사업자에게 제공하지 않습니다. 광고 표시에 필요한 기기 정보 처리는 개인정보 처리방침에서 안내합니다.</li>
+          <li>이용자가 광고를 눌러 이동한 외부 사이트의 거래는 이용자와 광고주 사이의 일이며, 운영자는 그 내용에 책임을 지지 않습니다.</li>
+          <li>프리미엄 이용자에게는 광고를 표시하지 않습니다.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Chapter 5 ================= -->
+  <section id="ch5">
+    <div class="pair">
+      <div class="en" lang="en"><h2>Chapter 5. Obligations and Liability</h2></div>
+      <div class="ko" lang="ko"><h2>제5장 의무와 책임</h2></div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 13 (Obligations of the Operator)</h3>
+        <ol>
+          <li>The Operator complies with applicable laws and these Terms and makes efforts to provide the Service reliably.</li>
+          <li>The Operator receives user inquiries and complaints at <span class="ph">zenith.4leaf@gmail.com</span> and responds as promptly as possible.</li>
+          <li>The Operator publishes and complies with its Privacy Policy.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제13조 (운영자의 의무)</h3>
+        <ol>
+          <li>운영자는 관련 법령과 이 약관을 지키며, 서비스를 안정적으로 제공하기 위해 노력합니다.</li>
+          <li>운영자는 이용자의 문의와 불만을 <span class="ph">zenith.4leaf@gmail.com</span>로 받고, 가능한 한 빨리 답변합니다.</li>
+          <li>운영자는 개인정보 처리방침을 공개하고 이를 지킵니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 14 (Obligations of Users and Prohibited Acts)</h3>
+        <ol>
+          <li>Users must not:
+            <ol type="a">
+              <li>reverse-engineer or modify the app, or circumvent payments, ads or usage limits;</li>
+              <li>use another person’s Google account or information to invite or join family sharing;</li>
+              <li>sell, transfer or improperly obtain Premium codes; or</li>
+              <li>use the Service for any purpose that violates the law.</li>
+            </ol>
+          </li>
+          <li>Users are responsible for managing their own device, app lock PIN and Google account.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제14조 (이용자의 의무와 금지 행위)</h3>
+        <ol>
+          <li>이용자는 다음 행위를 해서는 안 됩니다.
+            <ol type="a">
+              <li>앱을 역설계·변조하거나 결제·광고·이용 한도를 우회하는 행위</li>
+              <li>다른 사람의 구글 계정이나 정보를 도용하여 가족 공유에 초대하거나 참여하는 행위</li>
+              <li>프리미엄 코드를 판매·양도하거나 부정한 방법으로 얻는 행위</li>
+              <li>법령에 어긋나는 목적으로 서비스를 이용하는 행위</li>
+            </ol>
+          </li>
+          <li>이용자는 자신의 기기, 앱 잠금 PIN, 구글 계정을 스스로 관리해야 합니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 15 (Disclaimers)</h3>
+        <ol>
+          <li>The Service is a tool to help record household finances. It does not provide financial, investment or tax advice.</li>
+          <li>Calculated results such as statistics, budgets and card spending tiers, and the results of SMS, voice and receipt recognition, are for reference only; users should check their accuracy. They may differ from the actual spending tiers or billed amounts of card issuers.</li>
+          <li>Unless caused by the Operator’s intent or gross negligence, the Operator is not liable for damages caused by force majeure, device or OS problems, outages of external services such as App Stores or Google, or the user’s own fault (such as not making backups).</li>
+          <li>For features provided free of charge, the Operator is not liable unless otherwise required by law.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제15조 (면책)</h3>
+        <ol>
+          <li>서비스는 가계 기록을 돕는 도구이며, 재무·투자·세무에 관한 조언을 제공하지 않습니다.</li>
+          <li>통계, 예산, 카드 실적 등 계산 결과와 문자·음성·영수증 인식 결과는 참고용이며, 정확성은 이용자가 확인해야 합니다. 카드사의 실제 실적이나 청구 금액과 다를 수 있습니다.</li>
+          <li>운영자의 고의 또는 중대한 과실이 없는 한, 천재지변, 기기·운영체제 문제, 앱 마켓·구글 등 외부 서비스의 장애, 이용자의 과실(백업하지 않음 등)로 생긴 손해에 대해 운영자는 책임을 지지 않습니다.</li>
+          <li>무료로 제공되는 기능에 대해서는 법령에 특별한 규정이 없는 한 책임을 지지 않습니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 16 (Compensation for Damages)</h3>
+        <ol>
+          <li>If a user suffers damages due to the Operator’s intent or gross negligence, the Operator will compensate in accordance with applicable law.</li>
+          <li>If a user causes damages to the Operator by violating these Terms, the user must compensate the Operator.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제16조 (손해배상)</h3>
+        <ol>
+          <li>운영자의 고의 또는 중대한 과실로 이용자에게 손해가 생기면, 운영자는 관련 법령에 따라 배상합니다.</li>
+          <li>이용자가 이 약관을 어겨 운영자에게 손해를 입히면, 이용자는 그 손해를 배상해야 합니다.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Chapter 6 ================= -->
+  <section id="ch6">
+    <div class="pair">
+      <div class="en" lang="en"><h2>Chapter 6. Miscellaneous</h2></div>
+      <div class="ko" lang="ko"><h2>제6장 기타</h2></div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 17 (Changes to and Suspension of the Service)</h3>
+        <ol>
+          <li>The Operator may change the Service to improve features or for operational reasons, and will announce significant changes in the app in advance.</li>
+          <li>The Service may be temporarily suspended for maintenance, device or OS updates, or outages of external services.</li>
+          <li>If the Operator ends the Service, it will announce this in the app at least 30 days in advance and guide users on backing up their data. Any remaining paid period will be handled in accordance with App Store policies and applicable law.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제17조 (서비스의 변경과 중단)</h3>
+        <ol>
+          <li>운영자는 기능 개선이나 운영상 이유로 서비스 내용을 바꿀 수 있으며, 중요한 변경은 앱 안에 미리 공지합니다.</li>
+          <li>점검, 기기·운영체제 업데이트, 외부 서비스 장애 등으로 서비스가 일시적으로 중단될 수 있습니다.</li>
+          <li>운영자가 서비스를 종료하는 경우 30일 전에 앱 안에 공지하고, 이용자가 데이터를 백업할 수 있도록 안내합니다. 남은 유료 이용 기간은 앱 마켓 정책과 관련 법령에 따라 처리합니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 18 (Termination of Use)</h3>
+        <ol>
+          <li>Users may stop using the Service at any time by deleting the app. Deleting the app erases the Ledger Data on the device; users can delete backup files in Google Drive themselves.</li>
+          <li>Deleting the app does not cancel a subscription. Subscriptions must be cancelled in the App Store.</li>
+          <li>If a user violates Article 14, the Operator may restrict that user’s Premium use or invalidate their Premium code.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제18조 (이용 해지)</h3>
+        <ol>
+          <li>이용자는 언제든지 앱을 삭제하여 서비스 이용을 끝낼 수 있습니다. 앱을 삭제하면 기기의 가계부 데이터는 지워지며, 구글 드라이브의 백업 파일은 이용자가 직접 삭제할 수 있습니다.</li>
+          <li>앱을 삭제해도 정기 구독은 해지되지 않으므로, 구독 해지는 앱 마켓에서 해야 합니다.</li>
+          <li>이용자가 제14조를 어기면 운영자는 해당 이용자의 프리미엄 이용을 제한하거나 프리미엄 코드를 무효로 할 수 있습니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 19 (Intellectual Property)</h3>
+        <ol>
+          <li>All rights to the Service’s software, design, trademarks and other materials belong to the Operator.</li>
+          <li>All rights to Ledger Data belong to the user.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제19조 (지식재산권)</h3>
+        <ol>
+          <li>서비스의 소프트웨어, 디자인, 상표 등에 대한 권리는 운영자에게 있습니다.</li>
+          <li>가계부 데이터에 대한 권리는 이용자에게 있습니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Article 20 (Dispute Resolution and Governing Law)</h3>
+        <ol>
+          <li>The Operator and users will negotiate in good faith to resolve any dispute.</li>
+          <li>These Terms are governed by the laws of the Republic of Korea, and any lawsuit shall be filed with the court having jurisdiction under the Civil Procedure Act.</li>
+          <li>The Korean version of these Terms prevails if there is any discrepancy between the Korean and English versions.</li>
+        </ol>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>제20조 (분쟁 해결과 준거법)</h3>
+        <ol>
+          <li>운영자와 이용자는 분쟁이 생기면 성실히 협의하여 해결합니다.</li>
+          <li>이 약관은 대한민국 법을 따르며, 소송은 「민사소송법」에 따른 관할 법원에 제기합니다.</li>
+          <li>이 약관의 한국어본과 영문본의 내용이 다를 경우 한국어본이 우선합니다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="en" lang="en">
+        <h3>Addendum</h3>
+        <p>These Terms take effect on <span class="ph">2026.10.05</span>.</p>
+        <p class="meta">Operator: <span class="ph">zenith.4leaf</span> · Contact: <span class="ph">zenith.4leaf@gmail.com</span></p>
+      </div>
+      <div class="ko" lang="ko">
+        <h3>부칙</h3>
+        <p>이 약관은 <span class="ph">2026.10.05</span>부터 시행합니다.</p>
+        <p class="meta">운영자: <span class="ph">zenith.4leaf</span> · 문의: <span class="ph">zenith.4leaf@gmail.com</span></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  (function () {
+    var valid = { both: 1, en: 1, ko: 1 };
+    var buttons = document.querySelectorAll('.toggle button');
+    function setLang(lang, push) {
+      if (!valid[lang]) lang = 'both';
+      document.body.setAttribute('data-lang', lang);
+      document.documentElement.lang = lang === 'ko' ? 'ko' : 'en';
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.set === lang)); });
+      if (push) {
+        try {
+          var url = new URL(location.href);
+          if (lang === 'both') url.searchParams.delete('lang'); else url.searchParams.set('lang', lang);
+          history.replaceState(null, '', url);
+        } catch (e) {}
+      }
+    }
+    buttons.forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.set, true); }); });
+    var initial = 'both';
+    try { initial = new URLSearchParams(location.search).get('lang') || 'both'; } catch (e) {}
+    setLang(initial, false);
+  })();
+</script>
+</body>
+</html>
