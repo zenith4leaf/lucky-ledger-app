@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lucky Ledger User Guide</title>
-<meta name="google-site-verification" content="gP1VP9jgMO9p_5XIaeZe6BmXU9EirqFNa1H0Ytc5GNA" />
+<meta name="google-site-verification" content="3JFEb-NBx3LuFtEpAXP9cQcF6Jn6Rx6enDrNsB_TxAI" />
 <meta name="description" content="Lucky Ledger user guide — entering records, offsets, card bills, carry-over and prepayments, card perks, stats and settings">
 <style>
   :root {
@@ -168,7 +168,7 @@
           <circle cx="29" cy="32.2" r="2.3"/><circle cx="25.8" cy="29" r="2.3"/>
         </g>
       </svg>
-      <div><b>Lucky Ledger</b><span>User guide · v0.0.42</span></div>
+      <div><b>Lucky Ledger</b><span>User guide · v0.0.37</span></div>
     </div>
     <ol>
       <li><a href="#start">Getting started</a></li>
@@ -198,8 +198,8 @@
       <h1>Lucky Ledger User Guide</h1>
       <p>Lucky Ledger is a budget app that tracks where your money goes, organized around your cards and bank accounts. In one app you can log spending fast, use an <b>offset</b> to tidy up money friends pay you back, handle credit card <b>bills, carry-over and prepayments</b>, and keep an eye on your card <b>perks</b>.</p>
       <div class="meta">
-        <span class="pill">App version 0.0.42</span>
-        <span class="pill">As of October 11, 2026 (v0.0.42)</span>
+        <span class="pill">App version 0.0.37</span>
+        <span class="pill">As of October 5, 2026 (v0.0.37)</span>
         <span class="pill">Android first · same design on iOS</span>
       </div>
     </header>
@@ -689,75 +689,10 @@
 
     <section id="changes" class="changelog">
       <h2>15. What's new</h2>
-      <h3>v0.0.42 <span class="badge-new">Latest</span></h3>
-      <ul>
-        <li><b>Merge assets</b>: Tap Merge asset at the top of the asset edit screen and pick another asset of the same type (B). After one more confirmation, every entry of this asset (A) — expenses, income, transfers, card payments — moves to B, along with cards that used A as their payment account, recurring entries, favorites and the opening balance; A disappears. Merging cards combines billing cycles with the same due date. Transfers between A and B are deleted, and a waiting dialog shows while it works. <b>This can't be undone.</b></li>
-        <li><b>Backups restore only into the same account</b>: A backup made with an account can be restored only while signed in with that account; otherwise (or when signed out) you'll see "Can't restore". Backups include premium information, so this stops premium from being unlocked by restoring into another account (just as invited family accounts can't back up). Older backups without an account can still be restored, but they don't carry premium over.</li>
-        <li><b>Backup size</b>: Shown in KB, MB or GB depending on size, with thousands separators (e.g. 1,000 KB · 1.5 MB).</li>
-      </ul>
-      <h3>v0.0.41</h3>
-      <ul>
-        <li><b>Sync notice on the Ledger and Assets tabs</b>: Pulling to sync on the Ledger tab or tapping sync on the Assets tab still shows the "Syncing" dialog, but when it finishes a <b>notice appears at the top for 2–3 seconds and closes by itself</b> instead of a Close dialog. Sync elsewhere (Settings, etc.) keeps the completion dialog.</li>
-        <li><b>Tab sync updates the continuous backup</b>: Without family sharing, syncing from the Ledger or Assets tab no longer creates a new manual backup; it brings the <b>continuous backup</b> up to date (so routine pulls don't fill the 10 manual slots). Make manual backups with Back up to Drive in Settings › Cloud sync.</li>
-        <li><b>Amount box border</b>: The amount in the entry screen now sits in a rounded, bordered box like the memo and description fields.</li>
-        <li><b>Even spacing on the entry screen</b>: The gaps between all rows — type, date, asset, category, amount, suggestions, description, memo and keypad — are now the same.</li>
-        <li><b>Ledgers kept on this phone</b> also unlocks after watching an ad without premium, like the other backup and restore buttons.</li>
-      </ul>
-      <h3>v0.0.40</h3>
-      <ul>
-        <li><b>Delete family sharing data</b>: In Family, tap Delete family sharing data (admin, app PIN) — available <b>after you stop sharing</b> — to delete the Lucky_Ledger_NoDelete folder (family ledger sheets) and resume info from your Google Drive. The ledger on your phone is kept, and you can start fresh with Start sharing.</li>
-        <li><b>Sharing state lives in the cloud — it changes only with Start sharing / Stop sharing</b>: Family members follow the state in the cloud (the owner's Drive) and keep syncing while sharing is on. When the <b>owner signs out</b>, like a normal sign-out this phone shows as not connected, Family shows only "Me", and it doesn't sync (cloud sharing stays on, so the family keeps using it). Signing back in loads the sharing state and the updated ledger from the cloud and resumes syncing automatically; if sharing was stopped from another phone meanwhile, this phone matches that. When an <b>invited member signs out</b>, the invited ledger is removed from the phone and their own ledger from before joining comes back; signing back in with the same account reconnects automatically. Ledger backups include the sharing state, so restoring on another phone continues in the same state.</li>
-        <li><b>Ledgers per Google account</b>: When <b>another account</b> signs in on this phone, the current ledger (with its sharing state) is kept on the phone for the original account and the phone switches to that account's ledger (an empty one the first time; the app restarts). That account then follows its own state (resume invited or owner ledger), and when the original account signs back in its kept ledger is loaded and, if it was sharing, syncing resumes automatically.</li>
-        <li><b>Asks before switching accounts</b>: When you sign in with an account other than the one this phone's ledger belongs to, you choose "Load this account's ledger / Start with an empty ledger" or "Use this ledger for this account". It never switches silently.</li>
-        <li><b>Ledgers kept on this phone</b>: In Settings › Data › Ledgers kept on this phone you can see per-account copies, copies from right before a restore or account switch, before joining a family and more, with dates and asset/entry counts, and tap one to load it again. If a previous ledger seems missing after switching accounts, find it here.</li>
-        <li><b>When kept ledgers are created</b>: Not on sign-in or sign-out alone. Only when switching to another account (an account copy used to bring that ledger back), right before a restore or import (one each), and right before joining a family or resuming as owner (latest 5 of each). Entry counts use thousands separators, and each item has a Delete button (deleting an account copy warns that it won't come back when that account signs in).</li>
-        <li><b>Restoring another account's ledger</b>: If the ledger you're restoring doesn't belong to the signed-in account, a warning appears first — back up the current ledger before restoring — with an Export current ledger button.</li>
-        <li><b>Confirm with PIN or fingerprint</b>: Signing out, deleting family sharing data and switching back to the owner can also be confirmed with the Fingerprint/face button in the PIN dialog (if fingerprint is on in Settings › Security). Starting sharing, resuming, accepting and rejoining stay PIN-only because the PIN is the family ledger's key.</li>
-        <li><b>Drive backup management</b>: In Settings › Cloud sync › Drive backup, <b>manual backups are limited to 10</b> (shown like "Manual backups 3/10"). When full, Back up to Drive is locked — delete an old backup with its trash button first (old ones are no longer deleted silently). The <b>Continuous backup (automatic)</b> at the top is a single backup overwritten with this phone's ledger whenever you leave the app after a change — it doesn't count toward the limit and can't be deleted. Tap a backup to restore it.</li>
-        <li><b>Restore with the Restore button</b>: In the Drive backup and Ledgers kept on this phone lists, tapping an item no longer restores right away. Tap Restore on the right, confirm "Restore this backup?", and it restores.</li>
-        <li><b>Importing from 편한가계부 — recurring and favorites too</b>: Importing a 편한가계부 backup (.mmbak) now also brings over <b>recurring entries</b> (monthly, weekly, month-end) and <b>favorites</b>, besides assets, categories and entries. Recurring entries continue from the original app's next date (if that date has passed, they're created right away), and favorites without an amount become templates that only fill in the fields. The completion dialog shows how many were moved.</li>
-        <li><b>Text size</b>: New installs start at the "Normal" screen size. Amounts, periods and totals in Ledger › Monthly, and values on the right of lists such as language, currency and screen size in Settings, are larger (income/expense amounts stack vertically so they never overflow on narrow screens).</li>
-        <li><b>Typing a memo</b>: While typing a memo or description (keyboard open), the keypad hides so Cancel and Save sit right above the keyboard.</li>
-        <li><b>From memo back to the amount</b>: While typing a memo or description, tap the amount at the top to close the keyboard and bring the keypad back.</li>
-        <li><b>One line above the keypad</b>: "Written by" (left) and the Calculator mode switch (right) now share one line.</li>
-        <li><b>Drive backup list</b>: Manual backups sit in a fixed area showing about three at a time; scroll for more. The number in the cloud is the order (1 = newest).</li>
-        <li><b>Back-to-back Drive work</b>: If Drive briefly refuses because of back-to-back operations, the app now says "Sync in progress — please try again in a moment".</li>
-        <li><b>Bigger dialog text</b>: Titles, messages and buttons in all dialogs (switch, restore, sign out, …) are larger (the app's text size setting still applies on top).</li>
-        <li><b>Author fixed to you</b>: The "Written by" line above the keypad can't be changed; it's always the person entering (on the owner's phone the current user, on an invited phone the invited member).</li>
-        <li>"Family ledgers you were invited to" now shows <b>when you joined</b>.</li>
-        <li>The Leave invited ledger confirmation button says <b>"Leave"</b> instead of "Delete".</li>
-        <li>The <b>Resume owner family ledger</b> tile appears only when this account's Drive has a family ledger to resume (still needed for a new phone or reinstall; the app also asks automatically on opening or signing in).</li>
-        <li><b>Shows the search for past invited ledgers</b>: Opening Accept family invite shows "Looking…" and then either the list or "No family ledgers you were invited to"; when signed out it asks you to sign in.</li>
-        <li><b>Fix</b>: "You were removed from the family — get a new invitation" no longer appears when the owner didn't remove you (it also showed on brief internet or Google permission hiccups). Only a real access denial shows "The owner may have paused sharing or removed you", and the connection info is kept.</li>
-        <li><b>Family changes with the mode</b>: In owner mode you see "Family I manage" (you as owner + the family you invited); in invited mode you see "Family I was invited to" (owner = inviter, me = invited account). Start sharing, Stop sharing and Delete family sharing data appear only in owner mode; invited mode has only Sync now and Leave. Your owner email is the signed-in Google account and can't be edited (name, letters and color can).</li>
-        <li><b>Family ledger name</b>: When you tap Start sharing, choose the ledger name your family sees (default "&lt;owner ID&gt; ledger"). While sharing, change it with Rename in the sharing card; your family sees it after the next sync. Invited members see "Invited ledger: name". The name you chose is kept even if you stop sharing and start again.</li>
-        <li><b>Go back into ledgers you were invited to</b>: Invited ledgers are remembered in your Drive (hidden folder) and on this phone (included in ledger backups). Even after Leave invited ledger, open Settings › Google account › Accept family invite and, under "Family ledgers you were invited to", tap a name and enter your app PIN to go back in without the link (your current ledger is backed up). If the owner removed you, you'll see that you no longer have access and can remove it from the list. Stop your own family sharing first if you're an owner.</li>
-        <li><b>If the owner stops sharing (invited members)</b>: The invited ledger becomes <b>view-only</b>. Adding, editing and deleting are locked and Family shows that the owner paused sharing. It unlocks automatically when the owner restarts the same family ledger (so nothing unexpected mixes in while the owner tidies up). If the owner started a new one, leave the invited ledger and accept the new invitation.</li>
-        <li><b>Invite button moved</b>: The member list in the sharing card is gone; tap Invite next to a member in the family list below.</li>
-        <li><b>Fix</b>: Start sharing no longer fails with a Google connection error after leaving an invited ledger (a same-named folder shared by the owner was mistaken for your own).</li>
-        <li><b>Fixes</b>: ① switching accounts no longer signs you out and restarts from scratch ② the fingerprint button no longer disappears after a restore or account switch (lock, fingerprint, language and display settings now stay with the phone) ③ the download progress no longer shows numbers like 10/9 ④ "Family ledgers you were invited to" no longer appears when signed out (only the signed-in account's list) — and Leave invited ledger now shows a "Leaving" waiting dialog after you confirm.</li>
-        <li><b>New phones resume the last mode</b>: When you sign in on a new phone, the app offers "Resume invited family ledger" if this account was last in <b>invited mode</b>, or "Resume owner family ledger" if it was in <b>owner mode</b>. For invited mode, "invite connection info" locked with the app PIN you entered when accepting is kept in your Drive (hidden folder), so no new invitation is needed (no premium required). If you changed your app PIN or joined on an older version, tap Save resume PIN in Family once. Leaving the family deletes this info.</li>
-        <li><b>No Drive backup in invited mode</b>: (device save and share backups too) The invited ledger belongs to the owner, who backs it up. Drive keeps only the latest 10 backups, so skipping backups in invited mode keeps your own owner-mode backups from being pushed out.</li>
-        <li><b>Backups remember the mode</b>: A backup records whether it was invited or owner mode, shown in the restore dialog. Restoring returns to that mode. When you sign in or open the app outside invited mode, Family switches to the signed-in account's own family.</li>
-        <li><b>Joining another family (switching)</b>: ① Your own family sharing and an invited family can't run at the same time — first tap Stop sharing in Family. ② When you accept an invitation, a dialog warns that your current ledger will be replaced; it's backed up on this phone automatically (you can also export a file). ③ The invited ledger is downloaded and shown. ④ Leave invited ledger removes the invited ledger and leaves an empty one. ⑤ Your ledger from before you joined (including family info) is then loaded right away without asking (or an empty one if there is none). The invited ledger belongs to the owner and is not kept on your phone or in backups — use it alone or start your own family sharing again.</li>
-        <li><b>Faster first share</b>: The whole ledger is read at once instead of row by row.</li>
-        <li><b>No more long wait at "Checking for a previous family ledger"</b>: Only the latest 3 Drive backups are checked, for up to 20 seconds.</li>
-      </ul>
-      <h3>v0.0.39</h3>
-      <ul>
-        <li><b>Fewer family sharing sheets</b>: Instead of one sheet per asset, assets visible to the same family members share one sheet (usually 3–4 sheets for a family of two). The first share and every sync are much faster. Older per-asset sheets and sheets created twice with the same name are moved to the new layout and cleaned up by the app.</li>
-        <li><b>Fewer "Couldn't connect to Google Drive" errors</b>: When Google's per-minute request limit is hit, the app waits briefly and retries.</li>
-      </ul>
-      <h3>v0.0.38</h3>
-      <ul>
-        <li><b>Family sharing now uses Google Sheets</b>: Encrypted family ledger sheets live under a single <b>Lucky_Ledger_NoDelete</b> folder in the admin's Google Drive. Only changes are appended as new rows and only new rows are read, so it's faster and asks Google for lighter permissions. Please don't delete this folder (family sharing would stop).</li>
-        <li>If you used family sharing before: the admin should tap Start sharing again in Family and re-invite family members. The ledger on each phone is kept.</li>
-      </ul>
-      <h3>v0.0.37</h3>
+      <h3>v0.0.37 <span class="badge-new">Latest</span></h3>
       <ul>
         <li><b>Reset data asks once more</b>: After typing the phrase and tapping Reset, the app shows what that phrase will erase and asks again. Data is erased only when you tap Erase and reset.</li>
         <li><b>Full-screen ads once a day, after adding an expense</b>: No full-screen ad when opening the app. Once a day has passed since the last one, it appears once after you add an expense (no ads with Premium).</li>
-        <li><b>No more account picker when reopening the app</b>: Even when already signed in, reopening the app could show "Choose an account for Lucky Ledger" over the lock screen. The app now checks the saved account quietly.</li>
       </ul>
       <h3>v0.0.36</h3>
       <ul>
@@ -1004,7 +939,7 @@
       <ul><li>Category split view by default, choose a category before entering an amount, and categories that only appear in a comparison month are included.</li></ul>
     </section>
 
-    <footer>Lucky Ledger User Guide · by Zenith. · App version 0.0.42 · This guide is updated whenever the app is updated.</footer>
+    <footer>Lucky Ledger User Guide · by Zenith. · App version 0.0.37 · This guide is updated whenever the app is updated.</footer>
   </main>
 </div>
 <script>
